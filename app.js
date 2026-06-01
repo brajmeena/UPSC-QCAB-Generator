@@ -385,7 +385,7 @@ const PDFGenerator = (() => {
   function drawFooter(doc, footerCode, pageNum) {
     const footerY = PAGE_H - 8;
     doc.setFontSize(8.5);
-    doc.setFont('helvetica', 'bold');
+    doc.setFont('helvetica', 'bolditalic');
     doc.setTextColor(0, 0, 0);
     doc.text(footerCode, MARGIN_LEFT_TEXT, footerY);
     doc.text(String(pageNum), PAGE_W / 2, footerY, { align: 'center' });
@@ -395,7 +395,7 @@ const PDFGenerator = (() => {
     drawPageFrame(doc);
     drawRightMarginNote(doc);
 
-    const textAreaWidth = MARGIN_RIGHT_LINE - MARGIN_LEFT_TEXT - 22;
+    const textAreaWidth = MARGIN_RIGHT_LINE - MARGIN_LEFT_TEXT - 5;
 
     // Q number outside margin
     doc.setFontSize(11);
