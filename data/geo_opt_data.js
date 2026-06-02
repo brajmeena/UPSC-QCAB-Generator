@@ -338,7 +338,7 @@ const QUESTIONS_DATA_GEO_OPT =
     "source": "UPSC"
   },
   
-  {"__________Paper_2_2025"},
+  { "__________Paper_2_2025":"check"},
   {
     "id": 29,
     "year": 2025,
@@ -556,7 +556,7 @@ const QUESTIONS_DATA_GEO_OPT =
     "source": "UPSC"
   },
 
-  {"________Geo_2025_P1________"},
+  {"________Geo_2025_P1________": :"c"},
   {
     "id": 47,
     "year": 2024,
@@ -786,7 +786,7 @@ const QUESTIONS_DATA_GEO_OPT =
     "source": "UPSC"
   },
 
-  {"______Geo_2024_P2_________"},
+  {"______Geo_2024_P2_________": "ll"},
   {
     "id": 66,
     "year": 2024,
@@ -1112,7 +1112,7 @@ const QUESTIONS_DATA_GEO_OPT =
     "source": "UPSC"
   },
 
-  {"____GEO_2023_______"},
+  {"____GEO_2023_______": "P1"},
   {
     "id": 93,
     "year": 2023,
@@ -1450,7 +1450,7 @@ const QUESTIONS_DATA_GEO_OPT =
     "source": "UPSC"
   },
   
-  {"___________________GEO_2023_P2"}
+  {"___________________GEO_2023_P2": "P2"}
   {
     "id": 121,
     "year": 2023,
