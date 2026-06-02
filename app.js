@@ -394,17 +394,18 @@ const PDFGenerator = (() => {
   // Remove dedicated right-margin column — use full usable width
   const MARGIN_LEFT_OUTER = 10;   // Q number sits here
   const MARGIN_LEFT_LINE  = 22;   // left vertical rule
-  const MARGIN_LEFT_TEXT  = 24;   // text starts here
-  const MARGIN_RIGHT_LINE = 200;  // right vertical rule (no wide right margin)
-  const MARGIN_RIGHT_TEXT = 198;  // text wraps before here
+  const MARGIN_LEFT_TEXT  = 26;   // text starts here
+  const MARGIN_RIGHT_LINE = 190;  // right vertical rule (no wide right margin)
+  const MARGIN_RIGHT_TEXT = 186;  // text wraps before here
   const MARGIN_TOP        = 18;
   const MARGIN_BOTTOM     = 18;
-  const RIGHT_NOTE_X      = 202;  // "Candidates…" just outside right rule
+  const RIGHT_NOTE_X      = 294;  // "Candidates…" just outside right rule
 
   function pagesForMarks(marks) {
     if (marks <= 10) return 2;
     if (marks <= 15) return 3;
     if (marks <= 20) return 4;
+    if (marks <= 125) return 15;
     return Math.ceil(marks / 5) + 1;
   }
 
