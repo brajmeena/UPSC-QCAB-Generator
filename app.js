@@ -402,11 +402,11 @@ const PDFGenerator = (() => {
   const RIGHT_NOTE_X      = 294;  // "Candidates…" just outside right rule
 
   function pagesForMarks(marks) {
-    if (marks <= 10) return 2;
-    if (marks <= 15) return 3;
-    if (marks <= 20) return 4;
-    if (marks <= 125) return 15;
-    return Math.ceil(marks / 5) + 1;
+    if (marks === 10) return 2;
+    if (marks === 15) return 3;
+    if (marks === 20) return 4;
+    if (marks === 125) return 15;
+    return Math.ceil(marks / 5);
   }
 
   function drawPageFrame(doc) {
