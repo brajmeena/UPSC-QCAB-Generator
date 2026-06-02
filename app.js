@@ -30,14 +30,36 @@ const State = {
 const DataLayer = (() => {
 
   function loadQuestions() {
-    if (typeof QUESTIONS_DATA === 'undefined') {
-      console.error('QUESTIONS_DATA not found. Make sure que_database.js is loaded before app.js.');
-      State.allQuestions = [];
-    } else {
-      State.allQuestions = QUESTIONS_DATA;
-    }
-    State.filteredQuestions = [...State.allQuestions];
-  }
+  //   if (typeof QUESTIONS_DATA === 'undefined') {
+  //     console.error('QUESTIONS_DATA not found. Make sure que_database.js is loaded before app.js.');
+  //     State.allQuestions = [];
+  //   } else {
+  //     State.allQuestions = QUESTIONS_DATA;
+  //   }
+  //   State.filteredQuestions = [...State.allQuestions];
+  // }
+     let combinedQuestions = [];
+
+       // 1. Load regular questions as they are
+       if (typeof QUESTIONS_DATA !== 'undefined') {
+         combinedQuestions.push(...QUESTIONS_DATA);
+       } else {
+         console.warn('QUESTIONS_DATA not found.');
+       }
+   
+       // 2. Load geo questions and change their ID format
+       if (typeof QUESTIONS_DATA_GEO_OPT !== 'undefined') {
+         const modifiedGeoQuestions = QUESTIONS_DATA_GEO_OPT.map(q => ({
+           ...q,                 // Copy all existing properties (year, subject, marks, etc.)
+           id: `GEO_${q.id}`     // Overwrite the id property (e.g., 1 becomes "GEO_1")
+         }));
+         combinedQuestions.push(...modifiedGeoQuestions);
+       } else {console.warn('GEO_OPT_QUE not found.');}
+   
+       // 3. Update application state
+       State.allQuestions = combinedQuestions;
+       State.filteredQuestions = [...State.allQuestions];
+   }
 
   // Get unique values of a field, filtered by current constraints
   function getUniqueValues(field, constraints) {
