@@ -46,8 +46,21 @@ const DataLayer = (() => {
        } else {
          console.warn('QUESTIONS_DATA not found.');
        }
+     //  _____ Load GS1_______
        if (typeof GS1_QUE !== 'undefined') {
          combinedQuestions.push(...GS1_QUE);
+       } else {
+         console.warn('GS1_QUE not found.');
+       }
+      //  _____ Load GS2_______
+       if (typeof GS2_QUE !== 'undefined') {
+         combinedQuestions.push(...GS2_QUE);
+       } else {
+         console.warn('GS1_QUE not found.');
+       }
+     //  _____ Load GS3_______
+      if (typeof GS3_QUE !== 'undefined') {
+         combinedQuestions.push(...GS3_QUE);
        } else {
          console.warn('GS1_QUE not found.');
        }
