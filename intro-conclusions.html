@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intro & Conclusions — UPSC QCAB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── TOKENS ── */
+    :root {
+      --cream:        #F7F4EE;
+      --cream-dark:   #EDE9DF;
+      --parchment:    #E4DDD0;
+      --ink:          #1A1610;
+      --ink-soft:     #3D3628;
+      --ink-muted:    #7A6E5F;
+      --accent:       #8B2020;
+      --accent-light: #C44040;
+      --accent-pale:  #F5E8E8;
+      --gold:         #B8860B;
+      --gold-light:   #F0E6C0;
+      --violet:       #6B3FA0;
+      --violet-pale:  #EDE8F7;
+      --violet-mid:   #9B6DD0;
+      --border:       #C8BFA8;
+      --border-light: #DDD7CB;
+      --white:        #FFFFFF;
+      --success:      #2D6A4F;
+      --radius:       4px;
+      --radius-lg:    8px;
+      --shadow-sm:    0 1px 3px rgba(26,22,16,.08), 0 1px 2px rgba(26,22,16,.04);
+      --shadow:       0 2px 8px rgba(26,22,16,.10), 0 1px 3px rgba(26,22,16,.06);
+      --shadow-lg:    0 8px 24px rgba(26,22,16,.14), 0 2px 8px rgba(26,22,16,.08);
+      --font-serif:   'EB Garamond', Georgia, serif;
+      --font-sans:    'Instrument Sans', system-ui, sans-serif;
+      --font-mono:    'DM Mono', 'Courier New', monospace;
+      --ease:         cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    html { font-size: 15px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 15% 60%, rgba(107,63,160,.03) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 20%, rgba(139,32,32,.03) 0%, transparent 50%);
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--ink);
+      color: var(--cream);
+      border-bottom: 3px solid var(--accent);
+      padding: 0;
+    }
+    .header-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 1.1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .header-left { display: flex; align-items: center; gap: 1rem; }
+    .emblem-svg  { width: 38px; height: 38px; color: var(--gold); flex-shrink: 0; }
+    .site-title  { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; color: var(--cream); line-height: 1.2; }
+    .site-subtitle { font-size: 0.72rem; color: #A09585; letter-spacing: .08em; text-transform: uppercase; margin-top: .1rem; }
+    .header-nav  { display: flex; gap: .5rem; }
+    .nav-link {
+      font-size: .8rem; font-weight: 600; color: #A09585;
+      text-decoration: none; padding: .35rem .8rem;
+      border: 1px solid transparent; border-radius: var(--radius);
+      transition: all .15s; letter-spacing: .04em;
+    }
+    .nav-link:hover { color: var(--cream); border-color: rgba(255,255,255,.15); }
+    .nav-link.active { color: var(--gold); border-color: rgba(184,134,11,.3); background: rgba(184,134,11,.08); }
+
+    /* ── MAIN ── */
+    .main-container { max-width: 1280px; margin: 0 auto; padding: 2rem 2rem 4rem; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;
+    }
+    .page-title-group {}
+    .page-title {
+      font-family: var(--font-serif); font-size: 2rem; font-weight: 600;
+      color: var(--ink); line-height: 1.2;
+    }
+    .page-title span { color: var(--accent); font-style: italic; }
+    .page-desc { color: var(--ink-muted); font-size: .875rem; margin-top: .3rem; }
+    .page-header-actions { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .55rem 1.25rem;
+      font-family: var(--font-sans); font-size: .855rem; font-weight: 600;
+      border: 1px solid transparent; border-radius: var(--radius);
+      cursor: pointer; transition: all .15s var(--ease);
+      white-space: nowrap; letter-spacing: .01em; text-decoration: none;
+    }
+    .btn--accent  { background: var(--accent);  color: var(--white); border-color: var(--accent); }
+    .btn--accent:hover { background: var(--accent-light); transform: translateY(-1px); box-shadow: var(--shadow); }
+    .btn--violet  { background: var(--violet);  color: var(--white); border-color: var(--violet); }
+    .btn--violet:hover { background: var(--violet-mid); transform: translateY(-1px); box-shadow: var(--shadow); }
+    .btn--ghost   { background: transparent; color: var(--ink-soft); border-color: var(--border); }
+    .btn--ghost:hover { background: var(--cream-dark); }
+    .btn--primary { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .btn--primary:hover { background: var(--ink-soft); transform: translateY(-1px); box-shadow: var(--shadow); }
+    .btn--sm { padding: .35rem .75rem; font-size: .78rem; }
+    .btn--icon { padding: .35rem .5rem; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: flex; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+    }
+    .stat-pill {
+      display: flex; align-items: center; gap: .4rem;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 20px; padding: .25rem .85rem;
+      font-size: .78rem; color: var(--ink-muted);
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-pill strong { color: var(--ink); font-weight: 700; }
+    .stat-pill .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .dot--intro  { background: var(--accent); }
+    .dot--concl  { background: var(--violet); }
+    .dot--all    { background: var(--gold); }
+
+    /* ── FILTER PANEL ── */
+    .filter-panel {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem; box-shadow: var(--shadow-sm);
+    }
+    .filter-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .filter-title  { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; }
+    .filter-grid   { display: grid; grid-template-columns: 180px 200px 1fr auto auto; gap: .75rem; align-items: end; }
+    @media (max-width: 900px) {
+      .filter-grid { grid-template-columns: 1fr 1fr; }
+      .filter-group--search { grid-column: 1/-1; }
+      .filter-actions-inline { grid-column: 1/-1; display: flex; gap: .5rem; }
+    }
+    .filter-label { display: block; font-size: .7rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: .35rem; }
+    .filter-select, .filter-input {
+      width: 100%; padding: .52rem .8rem;
+      font-family: var(--font-sans); font-size: .875rem; color: var(--ink);
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: var(--radius); appearance: none; -webkit-appearance: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .filter-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A6E5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right .75rem center; padding-right: 2.2rem;
+    }
+    .filter-select:focus, .filter-input:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(139,32,32,.1); background: var(--white);
+    }
+    .tag-input-wrapper { position: relative; }
+    .tag-chips {
+      display: flex; flex-wrap: wrap; gap: .3rem;
+      min-height: 36px; padding: .3rem .6rem;
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: var(--radius); cursor: text; align-items: center;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .tag-chips:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(139,32,32,.1); background: var(--white); }
+    .tag-chip {
+      display: inline-flex; align-items: center; gap: .25rem;
+      background: var(--violet-pale); color: var(--violet);
+      border: 1px solid rgba(107,63,160,.2); border-radius: 3px;
+      padding: .1rem .45rem; font-size: .72rem; font-weight: 600;
+      white-space: nowrap;
+    }
+    .tag-chip .remove-tag { cursor: pointer; opacity: .6; font-size: .9rem; line-height: 1; }
+    .tag-chip .remove-tag:hover { opacity: 1; color: var(--accent); }
+    .tag-hidden-input { border: none; outline: none; background: transparent; font-family: var(--font-sans); font-size: .875rem; min-width: 80px; flex: 1; color: var(--ink); }
+
+    /* ── TABLE ── */
+    .table-wrapper {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm);
+    }
+    .table-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .75rem 1rem; border-bottom: 1px solid var(--border-light);
+      background: var(--cream-dark); gap: 1rem;
+    }
+    .table-toolbar-left { display: flex; align-items: center; gap: .75rem; }
+    .results-count { font-family: var(--font-mono); font-size: .78rem; color: var(--ink-muted); }
+    .type-toggle { display: flex; gap: .25rem; }
+    .type-btn {
+      padding: .25rem .65rem; font-size: .72rem; font-weight: 600;
+      border-radius: 3px; border: 1px solid var(--border); background: transparent;
+      cursor: pointer; transition: all .15s; color: var(--ink-muted); letter-spacing: .04em;
+    }
+    .type-btn.active-intro { background: var(--accent-pale); color: var(--accent); border-color: rgba(139,32,32,.25); }
+    .type-btn.active-concl { background: var(--violet-pale); color: var(--violet); border-color: rgba(107,63,160,.25); }
+    .type-btn.active-all   { background: var(--gold-light);  color: var(--gold);   border-color: rgba(184,134,11,.25); }
+
+    .ic-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+    .ic-table thead { background: var(--ink); color: var(--cream); }
+    .ic-table th {
+      padding: .65rem .9rem; text-align: left;
+      font-size: .68rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; font-family: var(--font-sans); white-space: nowrap;
+    }
+    .ic-table td { padding: .85rem .9rem; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+    .ic-table tbody tr { transition: background .1s; }
+    .ic-table tbody tr:hover { background: var(--cream); }
+    .ic-table tbody tr:last-child td { border-bottom: none; }
+
+    /* type badge */
+    .type-badge {
+      display: inline-block; padding: .15rem .5rem; border-radius: 3px;
+      font-size: .68rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap;
+    }
+    .type-badge--intro { background: var(--accent-pale); color: var(--accent); border: 1px solid rgba(139,32,32,.2); }
+    .type-badge--concl { background: var(--violet-pale); color: var(--violet); border: 1px solid rgba(107,63,160,.2); }
+
+    .col-subject-td { font-size: .8rem; font-weight: 600; color: var(--ink-soft); min-width: 100px; }
+    .col-topic-td   { font-size: .78rem; color: var(--ink-muted); min-width: 120px; font-style: italic; }
+    .col-text-td    { min-width: 300px; }
+    .col-type-td    { min-width: 80px; }
+    .col-edit-td    { min-width: 60px; text-align: right; }
+
+    .ic-text {
+      font-family: var(--font-serif); font-size: .95rem; color: var(--ink);
+      line-height: 1.55; margin-bottom: .45rem;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .ic-text.expanded { -webkit-line-clamp: unset; }
+    .expand-toggle { font-size: .72rem; color: var(--accent); cursor: pointer; font-weight: 600; margin-bottom: .4rem; display: inline-block; }
+    .expand-toggle:hover { text-decoration: underline; }
+
+    .row-tags { display: flex; flex-wrap: wrap; gap: .25rem; margin-top: .35rem; }
+    .row-tag {
+      display: inline-block; padding: .1rem .4rem; border-radius: 3px;
+      background: var(--violet-pale); color: var(--violet);
+      border: 1px solid rgba(107,63,160,.15); font-size: .68rem; font-weight: 600;
+    }
+
+    /* empty / loading */
+    .empty-state { text-align: center; padding: 3.5rem 2rem; }
+    .empty-icon  { font-size: 2.5rem; margin-bottom: .75rem; opacity: .4; }
+    .empty-title { font-family: var(--font-serif); font-size: 1.2rem; color: var(--ink-soft); margin-bottom: .35rem; }
+    .empty-desc  { font-size: .875rem; color: var(--ink-muted); }
+
+    /* ── MODAL OVERLAY ── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(26,22,16,.55);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000; backdrop-filter: blur(3px);
+      animation: fadeIn .2s;
+    }
+    .modal-overlay.hidden { display: none; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 2rem; width: 560px; max-width: 95vw; max-height: 92vh;
+      overflow-y: auto; position: relative;
+      box-shadow: var(--shadow-lg);
+      animation: scaleIn .2s var(--ease);
+    }
+    @keyframes scaleIn { from { transform: scale(.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+      background: var(--cream-dark); border: none; border-radius: 50%;
+      cursor: pointer; font-size: 1.1rem; color: var(--ink-muted); transition: all .15s;
+    }
+    .modal-close:hover { background: var(--parchment); color: var(--ink); }
+
+    .modal-title {
+      font-family: var(--font-serif); font-size: 1.45rem; font-weight: 600;
+      color: var(--ink); margin-bottom: 1.5rem;
+    }
+    .modal-title span { color: var(--accent); font-style: italic; }
+
+    /* type selector inside modal */
+    .type-selector { display: flex; gap: .5rem; margin-bottom: 1.25rem; }
+    .type-sel-btn {
+      flex: 1; padding: .55rem; font-size: .82rem; font-weight: 600;
+      border: 2px solid var(--border); border-radius: var(--radius);
+      background: transparent; cursor: pointer; transition: all .15s; text-align: center;
+      color: var(--ink-muted);
+    }
+    .type-sel-btn.sel-intro { border-color: var(--accent); background: var(--accent-pale); color: var(--accent); }
+    .type-sel-btn.sel-concl { border-color: var(--violet); background: var(--violet-pale); color: var(--violet); }
+
+    .modal-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .form-group {}
+    .form-label {
+      display: block; font-size: .72rem; font-weight: 600;
+      letter-spacing: .07em; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: .4rem;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: .6rem .85rem;
+      font-family: var(--font-sans); font-size: .875rem; color: var(--ink);
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: var(--radius); transition: border-color .15s;
+    }
+    .form-textarea { resize: vertical; min-height: 140px; font-family: var(--font-serif); font-size: 1rem; line-height: 1.6; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(139,32,32,.08); background: var(--white);
+    }
+    .form-select {
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A6E5F' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right .75rem center; padding-right: 2.2rem;
+    }
+
+    /* modal tag input */
+    .modal-tag-chips {
+      display: flex; flex-wrap: wrap; gap: .3rem;
+      min-height: 42px; padding: .35rem .65rem;
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: var(--radius); cursor: text; align-items: center;
+      transition: border-color .15s;
+    }
+    .modal-tag-chips:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(139,32,32,.08); background: var(--white); }
+    .modal-tag-chip {
+      display: inline-flex; align-items: center; gap: .25rem;
+      background: var(--violet-pale); color: var(--violet);
+      border: 1px solid rgba(107,63,160,.2); border-radius: 3px;
+      padding: .15rem .5rem; font-size: .75rem; font-weight: 600;
+    }
+    .modal-tag-chip .rm { cursor: pointer; opacity: .6; font-size: .95rem; }
+    .modal-tag-chip .rm:hover { opacity: 1; color: var(--accent); }
+    .modal-tag-input-el { border: none; outline: none; background: transparent; font-family: var(--font-sans); font-size: .875rem; min-width: 100px; flex: 1; color: var(--ink); padding: .1rem 0; }
+    .tag-hint { font-size: .7rem; color: var(--ink-muted); margin-top: .3rem; }
+
+    .modal-actions { display: flex; gap: .75rem; justify-content: flex-end; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border-light); }
+
+    /* delete button in edit mode */
+    .btn--danger { background: transparent; color: var(--accent); border-color: rgba(139,32,32,.3); }
+    .btn--danger:hover { background: var(--accent-pale); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      background: var(--ink); color: var(--cream);
+      padding: .75rem 1.5rem; border-radius: 24px;
+      font-size: .875rem; font-weight: 500;
+      box-shadow: var(--shadow-lg); z-index: 2000;
+      white-space: nowrap; animation: toastIn .3s var(--ease);
+    }
+    .toast.hidden { display: none; }
+    .toast--success { background: var(--success); }
+    .toast--error   { background: var(--accent); }
+    @keyframes toastIn { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--ink); color: #6B6055; padding: 1rem 2rem; margin-top: auto; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; text-align: center; }
+    .footer-text { font-size: .78rem; }
+    .footer-text a { color: var(--gold); text-decoration: none; }
+    .footer-text a:hover { text-decoration: underline; }
+
+    /* ── UTIL ── */
+    .hidden { display: none !important; }
+    ::selection { background: rgba(139,32,32,.15); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--ink-muted); }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="emblem-svg">
+        <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1"/>
+        <path d="M24 8 L24 40 M8 24 L40 24" stroke="currentColor" stroke-width="1"/>
+        <path d="M24 2 L26 8 L24 6 L22 8 Z" fill="currentColor"/>
+      </svg>
+      <div>
+        <div class="site-title">UPSC QCAB Generator</div>
+        <div class="site-subtitle">Intro &amp; Conclusions Bank</div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link">← QCAB Tool</a>
+      <a href="intro-conclusions.html" class="nav-link active">Intros &amp; Conclusions</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main-container">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-title-group">
+      <h1 class="page-title">Intro &amp; <span>Conclusions</span> Bank</h1>
+      <p class="page-desc">Store, search, and manage your introductions and conclusions for UPSC Mains answers.</p>
+    </div>
+    <div class="page-header-actions">
+      <button class="btn btn--ghost btn--sm" id="btn-import-json" title="Import entries from a JSON backup file">
+        ⬆ Import JSON
+      </button>
+      <button class="btn btn--ghost btn--sm" id="btn-export-json" title="Download all entries as JSON backup">
+        ⬇ Export JSON
+      </button>
+      <button class="btn btn--ghost btn--sm" id="btn-export-pdf" title="Export printable PDF grouped by Subject → Topic">
+        🖨 Export PDF
+      </button>
+      <button class="btn btn--accent" id="btn-add-new">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Add New
+      </button>
+      <!-- hidden file input for JSON import -->
+      <input type="file" id="import-file-input" accept=".json" class="hidden" />
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar" id="stats-bar">
+    <div class="stat-pill"><span class="dot dot--all"></span><span id="stat-total"><strong>0</strong> total</span></div>
+    <div class="stat-pill"><span class="dot dot--intro"></span><span id="stat-intro"><strong>0</strong> introductions</span></div>
+    <div class="stat-pill"><span class="dot dot--concl"></span><span id="stat-concl"><strong>0</strong> conclusions</span></div>
+  </div>
+
+  <!-- FILTER PANEL -->
+  <div class="filter-panel">
+    <div class="filter-header">
+      <h2 class="filter-title">Filter</h2>
+    </div>
+    <div class="filter-grid">
+      <div class="filter-group">
+        <label class="filter-label" for="f-subject">Subject</label>
+        <select class="filter-select" id="f-subject">
+          <option value="">All Subjects</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label" for="f-topic">Topic</label>
+        <input class="filter-input" type="text" id="f-topic" placeholder="Search topic…" />
+      </div>
+      <div class="filter-group filter-group--search">
+        <label class="filter-label">Keywords / Tags</label>
+        <div class="tag-chips" id="filter-tags-container">
+          <input class="tag-hidden-input" id="filter-tag-input" placeholder="Type a keyword &amp; press Enter…" autocomplete="off" />
+        </div>
+      </div>
+      <div class="filter-actions-inline" style="display:flex;gap:.5rem;align-items:flex-end;">
+        <button class="btn btn--primary" id="btn-apply">Apply</button>
+        <button class="btn btn--ghost" id="btn-reset">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE WRAPPER -->
+  <div class="table-wrapper">
+    <div class="table-toolbar">
+      <div class="table-toolbar-left">
+        <span class="results-count" id="results-count">0 results</span>
+        <div class="type-toggle">
+          <button class="type-btn active-all" data-filter-type="all">All</button>
+          <button class="type-btn" data-filter-type="intro">Intro</button>
+          <button class="type-btn" data-filter-type="conclusion">Conclusion</button>
+        </div>
+      </div>
+    </div>
+
+    <table class="ic-table" id="ic-table">
+      <thead>
+        <tr>
+          <th style="width:110px;">Subject</th>
+          <th style="width:140px;">Topic</th>
+          <th style="width:70px;">Type</th>
+          <th>Intro / Conclusion</th>
+          <th style="width:60px;text-align:right;">Edit</th>
+        </tr>
+      </thead>
+      <tbody id="ic-tbody">
+      </tbody>
+    </table>
+
+    <div class="empty-state hidden" id="empty-state">
+      <div class="empty-icon">📝</div>
+      <div class="empty-title">No entries yet</div>
+      <div class="empty-desc">Click <strong>Add New</strong> to store your first introduction or conclusion.</div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-text">&copy; 2026 Designed &amp; Developed by <a href="https://instagram.com/brajmohanm_" target="_blank" rel="noopener noreferrer">Brajmohan</a> &mdash; For Educational and Self-study purpose only.</p>
+  </div>
+</footer>
+
+<!-- ADD / EDIT MODAL -->
+<div class="modal-overlay hidden" id="entry-modal">
+  <div class="modal">
+    <button class="modal-close" id="modal-close-btn">&times;</button>
+    <h2 class="modal-title" id="modal-title">Add New <span>Entry</span></h2>
+
+    <!-- Type selector -->
+    <div class="type-selector">
+      <button class="type-sel-btn sel-intro" data-type="intro" id="sel-intro">Introduction</button>
+      <button class="type-sel-btn" data-type="conclusion" id="sel-concl">Conclusion</button>
+    </div>
+
+    <div class="modal-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="m-subject">Subject *</label>
+          <select class="form-select" id="m-subject">
+            <option value="">Choose subject…</option>
+            <optgroup label="GS Papers">
+              <option>Art &amp; Culture</option>
+              <option>History</option>
+              <option>World History</option>
+              <option>Geography</option>
+              <option>Society</option>
+              <option>Polity</option>
+              <option>Governance</option>
+              <option>IR</option>
+              <option>Social Justice</option>
+              <option>Economy</option>
+              <option>Agriculture</option>
+              <option>Science &amp; Tech</option>
+              <option>Environment</option>
+              <option>Security</option>
+              <option>Disaster Management</option>
+              <option>Ethics — Theory</option>
+              <option>Ethics — Case Studies</option>
+            </optgroup>
+            <optgroup label="Geography Optional">
+              <option>Geomorphology</option>
+              <option>Climatology</option>
+              <option>Oceanography</option>
+              <option>Biogeography</option>
+              <option>Environmental Geography</option>
+              <option>Population Geography</option>
+              <option>Settlement Geography</option>
+              <option>Economic Geography</option>
+              <option>Regional Development</option>
+              <option>Political Geography</option>
+              <option>Perspectives in Human Geography</option>
+              <option>Models</option>
+            </optgroup>
+            <option value="__custom__">+ Other (type below)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="m-topic">Topic *</label>
+          <input class="form-input" type="text" id="m-topic" placeholder="e.g. Monsoon, Federalism…" />
+        </div>
+      </div>
+
+      <!-- custom subject field (hidden unless "Other" chosen) -->
+      <div class="form-group hidden" id="custom-subject-group">
+        <label class="form-label" for="m-custom-subject">Custom Subject</label>
+        <input class="form-input" type="text" id="m-custom-subject" placeholder="Enter subject name…" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="m-text">Intro / Conclusion Text *</label>
+        <textarea class="form-textarea" id="m-text" rows="6" placeholder="Write your introduction or conclusion here…"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Tags / Keywords</label>
+        <div class="modal-tag-chips" id="modal-tag-chips">
+          <input class="modal-tag-input-el" id="modal-tag-input" placeholder="Add tag, press Enter or comma…" autocomplete="off" />
+        </div>
+        <p class="tag-hint">Press <kbd>Enter</kbd> or <kbd>,</kbd> after each tag. Press <kbd>Backspace</kbd> to remove last.</p>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn--danger hidden" id="btn-delete">Delete</button>
+      <button class="btn btn--ghost" id="btn-modal-cancel">Cancel</button>
+      <button class="btn btn--violet" id="btn-modal-save">Save Entry</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast hidden" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+'use strict';
+
+/* ============================================================
+   STORAGE — localStorage key
+   ============================================================ */
+const STORAGE_KEY = 'qcab_ic_entries';
+
+/* ============================================================
+   DATA LAYER
+   ============================================================ */
+const DB = (() => {
+  function load() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    } catch { return []; }
+  }
+
+  function save(entries) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+  }
+
+  function getAll()    { return load(); }
+
+  function add(entry) {
+    const entries = load();
+    entry.id = `ic_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
+    entry.createdAt = Date.now();
+    entries.unshift(entry);
+    save(entries);
+    return entry;
+  }
+
+  function update(id, updated) {
+    const entries = load();
+    const idx = entries.findIndex(e => e.id === id);
+    if (idx === -1) return false;
+    entries[idx] = { ...entries[idx], ...updated, id };
+    save(entries);
+    return true;
+  }
+
+  function remove(id) {
+    const entries = load().filter(e => e.id !== id);
+    save(entries);
+  }
+
+  return { getAll, add, update, remove };
+})();
+
+/* ============================================================
+   FILTER STATE
+   ============================================================ */
+const FilterState = {
+  subject:     '',
+  topic:       '',
+  tags:        [],       // active filter keyword chips
+  type:        'all',    // 'all' | 'intro' | 'conclusion'
+};
+
+/* ============================================================
+   TAG INPUT (filter bar)
+   ============================================================ */
+function makeTagInput(containerId, inputId, onUpdate) {
+  const container = document.getElementById(containerId);
+  const input     = document.getElementById(inputId);
+  let tags = [];
+
+  function renderChips() {
+    // remove old chips (keep input)
+    container.querySelectorAll('.tag-chip').forEach(c => c.remove());
+    tags.forEach((t, i) => {
+      const chip = document.createElement('span');
+      chip.className = 'tag-chip';
+      chip.innerHTML = `${escapeHtml(t)}<span class="remove-tag" data-i="${i}">&times;</span>`;
+      container.insertBefore(chip, input);
+    });
+    onUpdate(tags);
+  }
+
+  function addTag(val) {
+    const v = val.trim().toLowerCase();
+    if (v && !tags.includes(v)) { tags.push(v); renderChips(); }
+  }
+
+  function removeTag(i) { tags.splice(i, 1); renderChips(); }
+
+  input.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ',') && input.value.trim()) {
+      e.preventDefault();
+      addTag(input.value.replace(',', ''));
+      input.value = '';
+    }
+    if (e.key === 'Backspace' && !input.value && tags.length) {
+      removeTag(tags.length - 1);
+    }
+  });
+
+  container.addEventListener('click', e => {
+    const rm = e.target.closest('.remove-tag');
+    if (rm) removeTag(Number(rm.dataset.i));
+    else input.focus();
+  });
+
+  function reset() { tags = []; renderChips(); input.value = ''; }
+  function get()   { return [...tags]; }
+
+  return { reset, get, addTag };
+}
+
+/* ============================================================
+   MODAL TAG INPUT
+   ============================================================ */
+function makeModalTagInput() {
+  const container = document.getElementById('modal-tag-chips');
+  const input     = document.getElementById('modal-tag-input');
+  let tags = [];
+
+  function renderChips() {
+    container.querySelectorAll('.modal-tag-chip').forEach(c => c.remove());
+    tags.forEach((t, i) => {
+      const chip = document.createElement('span');
+      chip.className = 'modal-tag-chip';
+      chip.innerHTML = `${escapeHtml(t)}<span class="rm" data-i="${i}">&times;</span>`;
+      container.insertBefore(chip, input);
+    });
+  }
+
+  function addTag(val) {
+    const v = val.trim().toLowerCase();
+    if (v && !tags.includes(v)) { tags.push(v); renderChips(); }
+  }
+
+  function removeTag(i) { tags.splice(i, 1); renderChips(); }
+
+  input.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ',') && input.value.trim()) {
+      e.preventDefault();
+      addTag(input.value.replace(',', ''));
+      input.value = '';
+    }
+    if (e.key === 'Backspace' && !input.value && tags.length) {
+      removeTag(tags.length - 1);
+    }
+  });
+
+  container.addEventListener('click', e => {
+    const rm = e.target.closest('.rm');
+    if (rm) removeTag(Number(rm.dataset.i));
+    else input.focus();
+  });
+
+  function set(arr) { tags = [...(arr || [])]; renderChips(); input.value = ''; }
+  function get()    { return [...tags]; }
+  function clear()  { tags = []; renderChips(); input.value = ''; }
+
+  return { set, get, clear };
+}
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+let toastTimer = null;
+function showToast(msg, type = 'default') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = `toast toast--${type}`;
+  el.classList.remove('hidden');
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.add('hidden'), 3000);
+}
+
+/* ============================================================
+   SUBJECT DROPDOWN — populate filter & modal
+   ============================================================ */
+function getSubjects() {
+  const fixed = [
+    'Art & Culture','History','World History','Geography','Society',
+    'Polity','Governance','IR','Social Justice',
+    'Economy','Agriculture','Science & Tech','Environment','Security','Disaster Management',
+    'Ethics — Theory','Ethics — Case Studies',
+    'Geomorphology','Climatology','Oceanography','Biogeography','Environmental Geography',
+    'Population Geography','Settlement Geography','Economic Geography',
+    'Regional Development','Political Geography','Perspectives in Human Geography','Models'
+  ];
+  // Also grab any custom ones from storage
+  const entries = DB.getAll();
+  const custom  = entries.map(e => e.subject).filter(s => s && !fixed.includes(s));
+  return [...new Set([...fixed, ...custom])].sort();
+}
+
+function populateFilterSubject() {
+  const sel = document.getElementById('f-subject');
+  const prev = sel.value;
+  sel.innerHTML = '<option value="">All Subjects</option>';
+  getSubjects().forEach(s => {
+    const o = document.createElement('option');
+    o.value = s; o.textContent = s;
+    sel.appendChild(o);
+  });
+  if (prev) sel.value = prev;
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+function updateStats() {
+  const all   = DB.getAll();
+  const intro = all.filter(e => e.type === 'intro').length;
+  const concl = all.filter(e => e.type === 'conclusion').length;
+  document.getElementById('stat-total').innerHTML = `<strong>${all.length}</strong> total`;
+  document.getElementById('stat-intro').innerHTML = `<strong>${intro}</strong> introductions`;
+  document.getElementById('stat-concl').innerHTML = `<strong>${concl}</strong> conclusions`;
+}
+
+/* ============================================================
+   FILTER & RENDER TABLE
+   ============================================================ */
+function applyFilters() {
+  const allEntries = DB.getAll();
+
+  const subject = document.getElementById('f-subject').value.toLowerCase();
+  const topic   = document.getElementById('f-topic').value.trim().toLowerCase();
+  const tags    = FilterState.tags.map(t => t.toLowerCase());
+  const type    = FilterState.type;
+
+  const filtered = allEntries.filter(e => {
+    if (type !== 'all' && e.type !== type)               return false;
+    if (subject && e.subject.toLowerCase() !== subject)  return false;
+    if (topic   && !e.topic.toLowerCase().includes(topic)) return false;
+    if (tags.length) {
+      const haystack = [
+        e.topic, e.subject, e.text, ...(e.tags || [])
+      ].join(' ').toLowerCase();
+      if (!tags.every(t => haystack.includes(t)))        return false;
+    }
+    return true;
+  });
+
+  renderTable(filtered);
+}
+
+function renderTable(entries) {
+  const tbody  = document.getElementById('ic-tbody');
+  const empty  = document.getElementById('empty-state');
+  const table  = document.getElementById('ic-table');
+  const count  = document.getElementById('results-count');
+
+  tbody.innerHTML = '';
+  count.textContent = `${entries.length} result${entries.length !== 1 ? 's' : ''}`;
+
+  if (entries.length === 0) {
+    table.style.display = 'none';
+    empty.classList.remove('hidden');
+    return;
+  }
+
+  table.style.display = '';
+  empty.classList.add('hidden');
+
+  entries.forEach(e => {
+    const tr = document.createElement('tr');
+
+    const typeBadge = e.type === 'intro'
+      ? `<span class="type-badge type-badge--intro">Intro</span>`
+      : `<span class="type-badge type-badge--concl">Conclusion</span>`;
+
+    const tagHtml = (e.tags || []).map(t =>
+      `<span class="row-tag">${escapeHtml(t)}</span>`
+    ).join('');
+
+    const rowTagsHtml = tagHtml ? `<div class="row-tags">${tagHtml}</div>` : '';
+
+    const uniqueId = `expand-${e.id}`;
+
+    tr.innerHTML = `
+      <td class="col-subject-td">${escapeHtml(e.subject)}</td>
+      <td class="col-topic-td">${escapeHtml(e.topic)}</td>
+      <td class="col-type-td">${typeBadge}</td>
+      <td class="col-text-td">
+        <div class="ic-text" id="${uniqueId}">${escapeHtml(e.text)}</div>
+        <span class="expand-toggle" data-target="${uniqueId}">Show more ▾</span>
+        ${rowTagsHtml}
+      </td>
+      <td class="col-edit-td">
+        <button class="btn btn--ghost btn--sm btn--icon edit-btn" data-id="${e.id}" title="Edit">
+          ✏️
+        </button>
+      </td>
+    `;
+
+    // expand/collapse toggle
+    const toggle  = tr.querySelector('.expand-toggle');
+    const textDiv = tr.querySelector('.ic-text');
+
+    // hide toggle if text isn't clamped (short entries)
+    toggle.style.display = 'none';
+    requestAnimationFrame(() => {
+      if (textDiv.scrollHeight > textDiv.clientHeight + 2) {
+        toggle.style.display = 'inline-block';
+      }
+    });
+
+    toggle.addEventListener('click', () => {
+      const expanded = textDiv.classList.toggle('expanded');
+      toggle.textContent = expanded ? 'Show less ▴' : 'Show more ▾';
+    });
+
+    // edit btn
+    tr.querySelector('.edit-btn').addEventListener('click', () => openEditModal(e.id));
+
+    tbody.appendChild(tr);
+  });
+}
+
+/* ============================================================
+   MODAL STATE
+   ============================================================ */
+let modalMode    = 'add'; // 'add' | 'edit'
+let editingId    = null;
+let activeType   = 'intro';
+let modalTagCtrl = null;
+
+function openAddModal() {
+  modalMode  = 'add';
+  editingId  = null;
+  activeType = 'intro';
+
+  document.getElementById('modal-title').innerHTML = 'Add New <span>Entry</span>';
+  document.getElementById('btn-delete').classList.add('hidden');
+  document.getElementById('m-subject').value = '';
+  document.getElementById('m-topic').value   = '';
+  document.getElementById('m-text').value    = '';
+  document.getElementById('custom-subject-group').classList.add('hidden');
+  document.getElementById('m-custom-subject').value = '';
+
+  modalTagCtrl.clear();
+  setActiveType('intro');
+
+  document.getElementById('entry-modal').classList.remove('hidden');
+  setTimeout(() => document.getElementById('m-subject').focus(), 80);
+}
+
+function openEditModal(id) {
+  const entry = DB.getAll().find(e => e.id === id);
+  if (!entry) return;
+
+  modalMode  = 'edit';
+  editingId  = id;
+  activeType = entry.type;
+
+  document.getElementById('modal-title').innerHTML = 'Edit <span>Entry</span>';
+  document.getElementById('btn-delete').classList.remove('hidden');
+
+  // subject
+  const subjectSel = document.getElementById('m-subject');
+  const opts = Array.from(subjectSel.options).map(o => o.value);
+  if (opts.includes(entry.subject)) {
+    subjectSel.value = entry.subject;
+  } else {
+    subjectSel.value = '__custom__';
+    document.getElementById('custom-subject-group').classList.remove('hidden');
+    document.getElementById('m-custom-subject').value = entry.subject;
+  }
+
+  document.getElementById('m-topic').value = entry.topic || '';
+  document.getElementById('m-text').value  = entry.text  || '';
+
+  modalTagCtrl.set(entry.tags || []);
+  setActiveType(entry.type);
+
+  document.getElementById('entry-modal').classList.remove('hidden');
+  setTimeout(() => document.getElementById('m-text').focus(), 80);
+}
+
+function closeModal() {
+  document.getElementById('entry-modal').classList.add('hidden');
+}
+
+function setActiveType(type) {
+  activeType = type;
+  const introBtn = document.getElementById('sel-intro');
+  const conclBtn = document.getElementById('sel-concl');
+  introBtn.classList.toggle('sel-intro', type === 'intro');
+  introBtn.classList.toggle('sel-concl', false);
+  conclBtn.classList.toggle('sel-concl', type === 'conclusion');
+  conclBtn.classList.toggle('sel-intro', false);
+  if (type === 'intro') {
+    introBtn.className = 'type-sel-btn sel-intro';
+    conclBtn.className = 'type-sel-btn';
+  } else {
+    introBtn.className = 'type-sel-btn';
+    conclBtn.className = 'type-sel-btn sel-concl';
+  }
+}
+
+function saveModal() {
+  // Resolve subject
+  let subject = document.getElementById('m-subject').value;
+  if (subject === '__custom__') {
+    subject = document.getElementById('m-custom-subject').value.trim();
+  }
+  const topic = document.getElementById('m-topic').value.trim();
+  const text  = document.getElementById('m-text').value.trim();
+
+  if (!subject) { showToast('Please choose a subject.', 'error'); return; }
+  if (!topic)   { showToast('Please enter a topic.', 'error');   return; }
+  if (!text)    { showToast('Please enter the text.', 'error');  return; }
+
+  const tags = modalTagCtrl.get();
+
+  const entry = { type: activeType, subject, topic, text, tags };
+
+  if (modalMode === 'add') {
+    DB.add(entry);
+    showToast('Entry added!', 'success');
+  } else {
+    DB.update(editingId, entry);
+    showToast('Entry updated!', 'success');
+  }
+
+  closeModal();
+  populateFilterSubject();
+  updateStats();
+  applyFilters();
+}
+
+function deleteEntry() {
+  if (!editingId) return;
+  if (!confirm('Delete this entry permanently?')) return;
+  DB.remove(editingId);
+  showToast('Entry deleted.');
+  closeModal();
+  populateFilterSubject();
+  updateStats();
+  applyFilters();
+}
+
+/* ============================================================
+   EXPORT JSON
+   ============================================================ */
+function exportJSON() {
+  const entries = DB.getAll();
+  if (entries.length === 0) { showToast('Nothing to export yet.', 'error'); return; }
+  const blob = new Blob([JSON.stringify(entries, null, 2)], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = `ic_backup_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast(`Exported ${entries.length} entries.`, 'success');
+}
+
+/* ============================================================
+   IMPORT JSON
+   ============================================================ */
+function importJSON(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const incoming = JSON.parse(e.target.result);
+      if (!Array.isArray(incoming)) throw new Error('Not an array');
+
+      const existing = DB.getAll();
+      const existingIds = new Set(existing.map(en => en.id));
+
+      let added = 0;
+      const merged = [...existing];
+
+      incoming.forEach(entry => {
+        if (!entry.type || !entry.subject || !entry.text) return; // skip malformed
+        if (entry.id && existingIds.has(entry.id)) return;        // skip duplicates
+        // assign fresh id if missing
+        if (!entry.id) entry.id = `ic_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
+        merged.push(entry);
+        added++;
+      });
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+      populateFilterSubject();
+      updateStats();
+      applyFilters();
+      showToast(`Imported ${added} new entries (${incoming.length - added} duplicates skipped).`, 'success');
+    } catch (err) {
+      showToast('Invalid JSON file. Please use a file exported from this tool.', 'error');
+    }
+  };
+  reader.readAsText(file);
+}
+
+/* ============================================================
+   EXPORT PDF  —  grouped: Subject → Topic → Intro / Conclusion
+   ============================================================ */
+function exportPDF() {
+  const entries = DB.getAll();
+  if (entries.length === 0) { showToast('Nothing to export yet.', 'error'); return; }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+  const PW   = 210;          // page width mm
+  const ML   = 15;           // left margin
+  const MR   = 15;           // right margin
+  const MT   = 18;           // top margin
+  const MB   = 18;           // bottom margin
+  const TW   = PW - ML - MR; // text width
+  const PH   = 297;
+
+  let y      = MT;
+  let pageNo = 1;
+
+  // ── helpers ──────────────────────────────────────────────────
+  function checkPage(needed) {
+    if (y + needed > PH - MB) {
+      doc.addPage();
+      pageNo++;
+      y = MT;
+      drawPageFooter();
+    }
+  }
+
+  function drawPageFooter() {
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(140, 130, 115);
+    doc.text('UPSC Intros & Conclusions Bank', ML, PH - 8);
+    doc.text(String(pageNo), PW / 2, PH - 8, { align: 'center' });
+    doc.text(new Date().toLocaleDateString('en-IN'), PW - MR, PH - 8, { align: 'right' });
+    doc.setTextColor(0, 0, 0);
+  }
+
+  function wrapAndPrint(text, fontSize, fontStyle, color, indent, lineHeight) {
+    doc.setFontSize(fontSize);
+    doc.setFont('helvetica', fontStyle);
+    doc.setTextColor(...color);
+    const lines = doc.splitTextToSize(text, TW - indent);
+    lines.forEach(line => {
+      checkPage(lineHeight);
+      doc.text(line, ML + indent, y);
+      y += lineHeight;
+    });
+    doc.setTextColor(0, 0, 0);
+  }
+
+  // ── group: subject → topic → entries ─────────────────────────
+  const grouped = {};
+  entries.forEach(e => {
+    const subj  = e.subject  || 'General';
+    const topic = e.topic    || 'Untitled';
+    if (!grouped[subj])        grouped[subj] = {};
+    if (!grouped[subj][topic]) grouped[subj][topic] = [];
+    grouped[subj][topic].push(e);
+  });
+
+  // ── cover line ────────────────────────────────────────────────
+  doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(26, 22, 16);
+  doc.text('Intros & Conclusions Bank', ML, y);
+  y += 8;
+
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(122, 110, 95);
+  doc.text(`Generated ${new Date().toLocaleDateString('en-IN')} · ${entries.length} entries`, ML, y);
+  y += 3;
+
+  // divider
+  doc.setDrawColor(184, 134, 11);
+  doc.setLineWidth(0.6);
+  doc.line(ML, y, PW - MR, y);
+  y += 8;
+  doc.setTextColor(0, 0, 0);
+
+  drawPageFooter();
+
+  // ── iterate subjects ──────────────────────────────────────────
+  Object.keys(grouped).sort().forEach(subject => {
+    // Subject heading
+    checkPage(14);
+    doc.setFontSize(13);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(139, 32, 32);        // accent red
+    doc.text(subject.toUpperCase(), ML, y);
+    y += 2;
+    doc.setDrawColor(139, 32, 32);
+    doc.setLineWidth(0.4);
+    doc.line(ML, y, ML + doc.getTextWidth(subject.toUpperCase()), y);
+    y += 6;
+    doc.setTextColor(0, 0, 0);
+
+    Object.keys(grouped[subject]).sort().forEach(topic => {
+      const topicEntries = grouped[subject][topic];
+
+      // Topic heading
+      checkPage(10);
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'bolditalic');
+      doc.setTextColor(26, 22, 16);
+      doc.text(topic, ML + 3, y);
+      y += 6;
+
+      topicEntries.forEach(entry => {
+        // Type label
+        const label = entry.type === 'intro' ? '▸ Introduction' : '▸ Conclusion';
+        const labelColor = entry.type === 'intro' ? [139, 32, 32] : [107, 63, 160];
+
+        checkPage(7);
+        doc.setFontSize(8.5);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(...labelColor);
+        doc.text(label, ML + 5, y);
+        y += 5;
+
+        // Entry text
+        wrapAndPrint(entry.text, 10, 'normal', [40, 36, 28], 5, 5.5);
+
+        // Tags
+        if (entry.tags && entry.tags.length) {
+          checkPage(5);
+          doc.setFontSize(7.5);
+          doc.setFont('helvetica', 'italic');
+          doc.setTextColor(107, 63, 160);
+          doc.text('Tags: ' + entry.tags.join(', '), ML + 5, y);
+          y += 4.5;
+          doc.setTextColor(0, 0, 0);
+        }
+
+        y += 3; // gap between entries
+      });
+
+      y += 4; // gap between topics
+    });
+
+    y += 5; // gap between subjects
+  });
+
+  doc.save(`IC_Bank_${new Date().toISOString().slice(0,10)}.pdf`);
+  showToast('PDF exported successfully!', 'success');
+}
+
+/* ============================================================
+   TYPE TOGGLE (table toolbar)
+   ============================================================ */
+function bindTypeToggle() {
+  document.querySelectorAll('.type-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.type-btn').forEach(b => {
+        b.classList.remove('active-all', 'active-intro', 'active-concl');
+      });
+      const t = btn.dataset.filterType;
+      FilterState.type = t;
+      if (t === 'all')        btn.classList.add('active-all');
+      else if (t === 'intro') btn.classList.add('active-intro');
+      else                    btn.classList.add('active-concl');
+      applyFilters();
+    });
+  });
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Init modal tag controller
+  modalTagCtrl = makeModalTagInput();
+
+  // Init filter tag input
+  const filterTagCtrl = makeTagInput(
+    'filter-tags-container', 'filter-tag-input',
+    (tags) => { FilterState.tags = tags; }
+  );
+
+  // Populate subject dropdown
+  populateFilterSubject();
+
+  // Stats
+  updateStats();
+
+  // Initial render
+  applyFilters();
+
+  // Type toggle
+  bindTypeToggle();
+
+  // Filter: auto-apply on topic input
+  document.getElementById('f-topic').addEventListener('input', applyFilters);
+  document.getElementById('f-subject').addEventListener('change', applyFilters);
+
+  // Apply / Reset buttons
+  document.getElementById('btn-apply').addEventListener('click', applyFilters);
+  document.getElementById('btn-reset').addEventListener('click', () => {
+    document.getElementById('f-subject').value = '';
+    document.getElementById('f-topic').value   = '';
+    filterTagCtrl.reset();
+    FilterState.tags = [];
+    applyFilters();
+  });
+
+  // Export JSON
+  document.getElementById('btn-export-json').addEventListener('click', exportJSON);
+
+  // Export PDF
+  document.getElementById('btn-export-pdf').addEventListener('click', exportPDF);
+
+  // Import JSON — click hidden file input
+  document.getElementById('btn-import-json').addEventListener('click', () => {
+    document.getElementById('import-file-input').value = ''; // reset so same file can be re-imported
+    document.getElementById('import-file-input').click();
+  });
+  document.getElementById('import-file-input').addEventListener('change', (e) => {
+    importJSON(e.target.files[0]);
+  });
+
+  // Add new button
+  document.getElementById('btn-add-new').addEventListener('click', openAddModal);
+
+  // Modal close
+  document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+  document.getElementById('btn-modal-cancel').addEventListener('click', closeModal);
+  document.getElementById('entry-modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('entry-modal')) closeModal();
+  });
+
+  // Modal save / delete
+  document.getElementById('btn-modal-save').addEventListener('click', saveModal);
+  document.getElementById('btn-delete').addEventListener('click', deleteEntry);
+
+  // Type selector in modal
+  document.getElementById('sel-intro').addEventListener('click', () => setActiveType('intro'));
+  document.getElementById('sel-concl').addEventListener('click', () => setActiveType('conclusion'));
+
+  // Custom subject toggle
+  document.getElementById('m-subject').addEventListener('change', function() {
+    const grp = document.getElementById('custom-subject-group');
+    if (this.value === '__custom__') grp.classList.remove('hidden');
+    else { grp.classList.add('hidden'); document.getElementById('m-custom-subject').value = ''; }
+  });
+
+  // Keyboard: Escape closes modal
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+});
+</script>
+</body>
+</html>
