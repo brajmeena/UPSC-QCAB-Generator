@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intro & Conclusions — UPSC QCAB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Blue theme for IC page */
+      --bg:           #EEF3FA;
+      --bg-dark:      #E0EAF6;
+      --parchment:    #D5E2F2;
+      --ink:          #0F1E35;
+      --ink-soft:     #243A58;
+      --ink-muted:    #5A7499;
+      --accent:       #1A56A8;       /* primary blue */
+      --accent-light: #2E70CC;
+      --accent-pale:  #DDEAF8;
+      --intro-color:  #6B3FA0;       /* violet for intro */
+      --intro-pale:   #EDE8F7;
+      --intro-border: rgba(107,63,160,.25);
+      --concl-color:  #1A7A4A;       /* green for conclusion */
+      --concl-pale:   #E2F5EB;
+      --concl-border: rgba(26,122,74,.25);
+      --gold:         #B8860B;
+      --gold-light:   #F0E6C0;
+      --border:       #B8CEDE;
+      --border-light: #CDD9E8;
+      --white:        #FFFFFF;
+      --success:      #1A7A4A;
+      --danger:       #A02020;
+      --radius:       4px;
+      --radius-lg:    8px;
+      --shadow-sm:    0 1px 3px rgba(15,30,53,.08), 0 1px 2px rgba(15,30,53,.04);
+      --shadow:       0 2px 8px rgba(15,30,53,.10);
+      --shadow-lg:    0 8px 24px rgba(15,30,53,.14), 0 2px 8px rgba(15,30,53,.08);
+      --font-serif:   'EB Garamond', Georgia, serif;
+      --font-sans:    'Instrument Sans', system-ui, sans-serif;
+      --font-mono:    'DM Mono', 'Courier New', monospace;
+      --ease:         cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    html { font-size: 15px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse at 10% 60%, rgba(26,86,168,.05) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 15%, rgba(107,63,160,.04) 0%, transparent 50%);
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--ink);
+      border-bottom: 3px solid var(--accent);
+    }
+    .header-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 1.1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .header-left { display: flex; align-items: center; gap: 1rem; }
+    .emblem-svg  { width: 38px; height: 38px; color: #5B9BD5; flex-shrink: 0; }
+    .site-title  { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; color: #EEF3FA; line-height: 1.2; }
+    .site-subtitle { font-size: 0.72rem; color: #7096B8; letter-spacing: .08em; text-transform: uppercase; margin-top: .1rem; }
+    .header-nav  { display: flex; gap: .5rem; }
+    .nav-link {
+      font-size: .8rem; font-weight: 600; color: #7096B8;
+      text-decoration: none; padding: .35rem .8rem;
+      border: 1px solid transparent; border-radius: var(--radius);
+      transition: all .15s; letter-spacing: .04em;
+    }
+    .nav-link:hover { color: #EEF3FA; border-color: rgba(255,255,255,.15); }
+    .nav-link.active { color: #5B9BD5; border-color: rgba(91,155,213,.3); background: rgba(91,155,213,.1); }
+
+    /* ── MAIN ── */
+    .main-container { max-width: 1280px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+
+    /* ── TOP BAR (stats + actions in one line) ── */
+    .top-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap;
+    }
+    .top-bar-left { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+    .top-bar-right { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+
+    .stat-pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 20px; padding: .25rem .85rem;
+      font-size: .78rem; color: var(--ink-muted);
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-pill strong { color: var(--ink); font-weight: 700; }
+    .stat-pill .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .dot--total { background: var(--accent); }
+    .dot--intro { background: var(--intro-color); }
+    .dot--concl { background: var(--concl-color); }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .5rem 1.1rem;
+      font-family: var(--font-sans); font-size: .84rem; font-weight: 600;
+      border: 1px solid transparent; border-radius: var(--radius);
+      cursor: pointer; transition: all .15s var(--ease);
+      white-space: nowrap; letter-spacing: .01em; text-decoration: none;
+    }
+    .btn--primary { background: var(--accent); color: var(--white); border-color: var(--accent); }
+    .btn--primary:hover { background: var(--accent-light); transform: translateY(-1px); box-shadow: var(--shadow); }
+    .btn--ghost { background: transparent; color: var(--ink-soft); border-color: var(--border); }
+    .btn--ghost:hover { background: var(--bg-dark); }
+    .btn--danger { background: transparent; color: var(--danger); border-color: rgba(160,32,32,.3); }
+    .btn--danger:hover { background: #FAE8E8; }
+    .btn--sm { padding: .35rem .75rem; font-size: .78rem; }
+    .btn--icon { padding: .35rem .5rem; }
+    .btn--add { background: var(--accent); color: var(--white); border-color: var(--accent); }
+    .btn--add:hover { background: var(--accent-light); transform: translateY(-1px); box-shadow: var(--shadow); }
+
+    /* ── FILTER PANEL ── */
+    .filter-panel {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.1rem 1.4rem;
+      margin-bottom: 1.1rem; box-shadow: var(--shadow-sm);
+    }
+    .filter-grid {
+      display: grid;
+      grid-template-columns: 150px 180px 200px 1fr auto auto;
+      gap: .65rem; align-items: end;
+    }
+    @media (max-width: 1000px) {
+      .filter-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .filter-group--tags { grid-column: 1/-1; }
+      .filter-actions-inline { grid-column: 1/-1; display: flex; gap: .5rem; }
+    }
+    .filter-label {
+      display: block; font-size: .69rem; font-weight: 600;
+      letter-spacing: .07em; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: .3rem;
+    }
+    .filter-select, .filter-input {
+      width: 100%; padding: .5rem .75rem;
+      font-family: var(--font-sans); font-size: .855rem; color: var(--ink);
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); appearance: none; -webkit-appearance: none;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .filter-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235A7499' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right .7rem center; padding-right: 2rem;
+    }
+    .filter-select:focus, .filter-input:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(26,86,168,.12); background: var(--white);
+    }
+
+    /* tag chips in filter */
+    .tag-chips {
+      display: flex; flex-wrap: wrap; gap: .3rem;
+      min-height: 36px; padding: .28rem .55rem;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); cursor: text; align-items: center;
+      transition: border-color .15s;
+    }
+    .tag-chips:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,86,168,.1); background: var(--white); }
+    .tag-chip {
+      display: inline-flex; align-items: center; gap: .2rem;
+      background: var(--accent-pale); color: var(--accent);
+      border: 1px solid rgba(26,86,168,.2); border-radius: 3px;
+      padding: .08rem .42rem; font-size: .7rem; font-weight: 600; white-space: nowrap;
+    }
+    .tag-chip .remove-tag { cursor: pointer; opacity: .6; font-size: .85rem; line-height: 1; }
+    .tag-chip .remove-tag:hover { opacity: 1; }
+    .tag-hidden-input {
+      border: none; outline: none; background: transparent;
+      font-family: var(--font-sans); font-size: .855rem; min-width: 80px; flex: 1; color: var(--ink);
+    }
+
+    /* ── TABLE WRAPPER ── */
+    .table-wrapper {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm);
+    }
+    .table-toolbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .65rem 1rem; border-bottom: 1px solid var(--border-light);
+      background: var(--bg-dark); gap: 1rem; flex-wrap: wrap;
+    }
+    .table-toolbar-left  { display: flex; align-items: center; gap: .65rem; flex-wrap: wrap; }
+    .table-toolbar-right { display: flex; align-items: center; gap: .5rem; }
+
+    /* selected bar */
+    .selected-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--gold-light); border-bottom: 1px solid rgba(184,134,11,.3);
+      padding: .55rem 1rem; gap: 1rem;
+    }
+    .selected-bar__info { display: flex; align-items: center; gap: .75rem; }
+    .selected-bar__count { font-weight: 700; font-size: .875rem; color: var(--ink); }
+    .selected-bar__actions { display: flex; gap: .5rem; }
+
+    .results-count { font-family: var(--font-mono); font-size: .76rem; color: var(--ink-muted); }
+
+    .type-toggle { display: flex; gap: .2rem; }
+    .type-btn {
+      padding: .22rem .6rem; font-size: .7rem; font-weight: 600;
+      border-radius: 3px; border: 1px solid var(--border); background: transparent;
+      cursor: pointer; transition: all .15s; color: var(--ink-muted); letter-spacing: .04em;
+    }
+    .type-btn.active-all   { background: var(--accent-pale); color: var(--accent);       border-color: rgba(26,86,168,.25); }
+    .type-btn.active-intro { background: var(--intro-pale);  color: var(--intro-color);  border-color: var(--intro-border); }
+    .type-btn.active-concl { background: var(--concl-pale);  color: var(--concl-color);  border-color: var(--concl-border); }
+
+    /* ── IC TABLE ── */
+    .ic-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+    .ic-table thead { background: var(--ink); color: #EEF3FA; }
+    .ic-table th {
+      padding: .6rem .9rem; text-align: left;
+      font-size: .67rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; font-family: var(--font-sans); white-space: nowrap;
+    }
+    .ic-table td { padding: .8rem .9rem; border-bottom: 1px solid var(--border-light); vertical-align: top; }
+    .ic-table tbody tr { transition: background .1s; }
+    .ic-table tbody tr:hover { background: var(--bg); }
+    .ic-table tbody tr.row--selected { background: var(--accent-pale) !important; border-left: 3px solid var(--accent); }
+    .ic-table tbody tr:last-child td { border-bottom: none; }
+
+    /* checkbox */
+    .checkbox-wrapper { display: inline-flex; align-items: center; cursor: pointer; position: relative; }
+    .checkbox-wrapper input[type="checkbox"] { opacity: 0; position: absolute; width: 16px; height: 16px; cursor: pointer; z-index: 1; margin: 0; }
+    .checkmark {
+      width: 16px; height: 16px; border: 1.5px solid var(--border); border-radius: 3px;
+      background: var(--white); display: flex; align-items: center; justify-content: center;
+      transition: all .15s; flex-shrink: 0;
+    }
+    .checkbox-wrapper input:checked ~ .checkmark { background: var(--accent); border-color: var(--accent); }
+    .checkbox-wrapper input:checked ~ .checkmark::after {
+      content: ''; width: 4px; height: 7px;
+      border: 2px solid var(--white); border-top: none; border-left: none;
+      transform: rotate(40deg) translateY(-1px); display: block;
+    }
+    .checkbox-wrapper input:indeterminate ~ .checkmark { background: var(--accent); border-color: var(--accent); }
+    .checkbox-wrapper input:indeterminate ~ .checkmark::after {
+      content: ''; width: 8px; height: 2px; background: var(--white); display: block; border-radius: 1px;
+    }
+
+    /* type badges */
+    .type-badge {
+      display: inline-block; padding: .12rem .45rem; border-radius: 3px;
+      font-size: .67rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap;
+    }
+    .type-badge--intro { background: var(--intro-pale); color: var(--intro-color); border: 1px solid var(--intro-border); }
+    .type-badge--concl { background: var(--concl-pale); color: var(--concl-color); border: 1px solid var(--concl-border); }
+
+    .col-subject-td { font-size: .8rem; font-weight: 600; color: var(--ink-soft); min-width: 100px; }
+    .col-topic-td   { font-size: .78rem; color: var(--ink-muted); min-width: 120px; font-style: italic; }
+    .col-check-td   { width: 40px; text-align: center; }
+    .col-type-td    { min-width: 80px; }
+    .col-text-td    { min-width: 280px; }
+    .col-edit-td    { min-width: 50px; text-align: right; }
+
+    .ic-text {
+      font-family: var(--font-serif); font-size: .95rem; color: var(--ink);
+      line-height: 1.55; margin-bottom: .4rem;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .ic-text.expanded { -webkit-line-clamp: unset; }
+    .expand-toggle { font-size: .7rem; color: var(--accent); cursor: pointer; font-weight: 600; margin-bottom: .35rem; display: inline-block; }
+    .expand-toggle:hover { text-decoration: underline; }
+
+    .row-tags { display: flex; flex-wrap: wrap; gap: .22rem; margin-top: .3rem; }
+    .row-tag {
+      display: inline-block; padding: .08rem .38rem; border-radius: 3px;
+      background: var(--accent-pale); color: var(--accent);
+      border: 1px solid rgba(26,86,168,.15); font-size: .67rem; font-weight: 600;
+    }
+
+    /* empty state */
+    .empty-state { text-align: center; padding: 3.5rem 2rem; }
+    .empty-icon  { font-size: 2.5rem; margin-bottom: .75rem; opacity: .4; }
+    .empty-title { font-family: var(--font-serif); font-size: 1.2rem; color: var(--ink-soft); margin-bottom: .35rem; }
+    .empty-desc  { font-size: .875rem; color: var(--ink-muted); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(15,30,53,.55);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000; backdrop-filter: blur(3px); animation: fadeIn .2s;
+    }
+    .modal-overlay.hidden { display: none; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .modal {
+      background: var(--white); border-radius: var(--radius-lg);
+      padding: 2rem; width: 560px; max-width: 95vw; max-height: 92vh;
+      overflow-y: auto; position: relative;
+      box-shadow: var(--shadow-lg); animation: scaleIn .2s var(--ease);
+    }
+    @keyframes scaleIn { from { transform: scale(.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .modal-close {
+      position: absolute; top: 1rem; right: 1rem;
+      width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+      background: var(--bg-dark); border: none; border-radius: 50%;
+      cursor: pointer; font-size: 1.1rem; color: var(--ink-muted); transition: all .15s;
+    }
+    .modal-close:hover { background: var(--parchment); color: var(--ink); }
+
+    .modal-title {
+      font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600;
+      color: var(--ink); margin-bottom: 1.25rem;
+    }
+    .modal-title span { color: var(--accent); font-style: italic; }
+
+    .type-selector { display: flex; gap: .5rem; margin-bottom: 1.15rem; }
+    .type-sel-btn {
+      flex: 1; padding: .5rem; font-size: .82rem; font-weight: 600;
+      border: 2px solid var(--border); border-radius: var(--radius);
+      background: transparent; cursor: pointer; transition: all .15s; text-align: center; color: var(--ink-muted);
+    }
+    .type-sel-btn.sel-intro { border-color: var(--intro-color); background: var(--intro-pale); color: var(--intro-color); }
+    .type-sel-btn.sel-concl { border-color: var(--concl-color); background: var(--concl-pale); color: var(--concl-color); }
+
+    .modal-form { display: flex; flex-direction: column; gap: .9rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .form-label {
+      display: block; font-size: .69rem; font-weight: 600;
+      letter-spacing: .07em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: .35rem;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: .58rem .8rem;
+      font-family: var(--font-sans); font-size: .875rem; color: var(--ink);
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+      transition: border-color .15s;
+    }
+    .form-textarea { resize: vertical; min-height: 130px; font-family: var(--font-serif); font-size: .98rem; line-height: 1.6; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(26,86,168,.1); background: var(--white);
+    }
+    .form-select {
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235A7499' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right .7rem center; padding-right: 2rem;
+    }
+
+    .modal-tag-chips {
+      display: flex; flex-wrap: wrap; gap: .28rem;
+      min-height: 40px; padding: .3rem .6rem;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); cursor: text; align-items: center; transition: border-color .15s;
+    }
+    .modal-tag-chips:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,86,168,.1); background: var(--white); }
+    .modal-tag-chip {
+      display: inline-flex; align-items: center; gap: .22rem;
+      background: var(--accent-pale); color: var(--accent);
+      border: 1px solid rgba(26,86,168,.2); border-radius: 3px;
+      padding: .12rem .45rem; font-size: .74rem; font-weight: 600;
+    }
+    .modal-tag-chip .rm { cursor: pointer; opacity: .6; font-size: .9rem; }
+    .modal-tag-chip .rm:hover { opacity: 1; }
+    .modal-tag-input-el { border: none; outline: none; background: transparent; font-family: var(--font-sans); font-size: .875rem; min-width: 90px; flex: 1; color: var(--ink); padding: .1rem 0; }
+    .tag-hint { font-size: .68rem; color: var(--ink-muted); margin-top: .28rem; }
+
+    .modal-actions { display: flex; gap: .65rem; justify-content: flex-end; margin-top: 1.1rem; padding-top: 1.1rem; border-top: 1px solid var(--border-light); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      background: var(--ink); color: #EEF3FA;
+      padding: .7rem 1.4rem; border-radius: 24px;
+      font-size: .875rem; font-weight: 500; box-shadow: var(--shadow-lg); z-index: 2000;
+      white-space: nowrap; animation: toastIn .3s var(--ease);
+    }
+    .toast.hidden { display: none; }
+    .toast--success { background: var(--success); }
+    .toast--error   { background: var(--danger); }
+    @keyframes toastIn { from { opacity: 0; transform: translate(-50%, 12px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+    /* ── FOOTER ── */
+    .site-footer { background: var(--ink); color: #4A6A8A; padding: 1rem 2rem; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; text-align: center; }
+    .footer-text { font-size: .78rem; }
+    .footer-text a { color: #5B9BD5; text-decoration: none; }
+    .footer-text a:hover { text-decoration: underline; }
+
+    .hidden { display: none !important; }
+    ::selection { background: rgba(26,86,168,.15); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--ink-muted); }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="emblem-svg">
+        <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1"/>
+        <path d="M24 8 L24 40 M8 24 L40 24" stroke="currentColor" stroke-width="1"/>
+        <path d="M24 2 L26 8 L24 6 L22 8 Z" fill="currentColor"/>
+      </svg>
+      <div>
+        <div class="site-title">UPSC QCAB Generator</div>
+        <div class="site-subtitle">Intro &amp; Conclusions Bank</div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <a href="index.html" class="nav-link">← QCAB Tool</a>
+      <a href="intro-conclusions.html" class="nav-link active">Intros &amp; Conclusions</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main-container">
+
+  <!-- TOP BAR: stats left | import/export/add right -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <div class="stat-pill"><span class="dot dot--total"></span><span id="stat-total"><strong>0</strong> total</span></div>
+      <div class="stat-pill"><span class="dot dot--intro"></span><span id="stat-intro"><strong>0</strong> introductions</span></div>
+      <div class="stat-pill"><span class="dot dot--concl"></span><span id="stat-concl"><strong>0</strong> conclusions</span></div>
+    </div>
+    <div class="top-bar-right">
+      <button class="btn btn--ghost btn--sm" id="btn-import-json" title="Import entries from a JSON backup file">⬆ Import JSON</button>
+      <button class="btn btn--ghost btn--sm" id="btn-export-json" title="Download all entries as JSON backup">⬇ Export JSON</button>
+      <button class="btn btn--add btn--sm" id="btn-add-new">
+        <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Add New
+      </button>
+      <input type="file" id="import-file-input" accept=".json" class="hidden" />
+    </div>
+  </div>
+
+  <!-- FILTER PANEL -->
+  <div class="filter-panel">
+    <div class="filter-grid">
+      <!-- Paper filter -->
+      <div class="filter-group">
+        <label class="filter-label" for="f-paper">Paper</label>
+        <select class="filter-select" id="f-paper">
+          <option value="">All Papers</option>
+          <option value="GS1">GS1</option>
+          <option value="GS2">GS2</option>
+          <option value="GS3">GS3</option>
+          <option value="GS4">GS4</option>
+          <option value="Essay">Essay</option>
+          <option value="Geo Optional">Geo Optional</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <!-- Subject filter (cascades from Paper) -->
+      <div class="filter-group">
+        <label class="filter-label" for="f-subject">Subject</label>
+        <select class="filter-select" id="f-subject">
+          <option value="">All Subjects</option>
+        </select>
+      </div>
+      <!-- Topic -->
+      <div class="filter-group">
+        <label class="filter-label" for="f-topic">Topic</label>
+        <input class="filter-input" type="text" id="f-topic" placeholder="Search topic…" />
+      </div>
+      <!-- Keywords / Tags -->
+      <div class="filter-group filter-group--tags">
+        <label class="filter-label">Keywords / Tags</label>
+        <div class="tag-chips" id="filter-tags-container">
+          <input class="tag-hidden-input" id="filter-tag-input" placeholder="Type keyword &amp; press Enter…" autocomplete="off" />
+        </div>
+      </div>
+      <div style="display:flex;gap:.4rem;align-items:flex-end;">
+        <button class="btn btn--primary btn--sm" id="btn-apply">Apply</button>
+        <button class="btn btn--ghost btn--sm" id="btn-reset">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE WRAPPER -->
+  <div class="table-wrapper">
+    <div class="table-toolbar">
+      <div class="table-toolbar-left">
+        <span class="results-count" id="results-count">0 results</span>
+        <div class="type-toggle">
+          <button class="type-btn active-all" data-filter-type="all">All</button>
+          <button class="type-btn" data-filter-type="intro">Intro</button>
+          <button class="type-btn" data-filter-type="conclusion">Conclusion</button>
+        </div>
+      </div>
+      <div class="table-toolbar-right">
+        <button class="btn btn--ghost btn--sm" id="btn-export-pdf" title="Export selected entries as PDF">🖨 Export PDF</button>
+      </div>
+    </div>
+
+    <!-- Selected bar (shown when rows are checked) -->
+    <div class="selected-bar hidden" id="selected-bar">
+      <div class="selected-bar__info">
+        <span class="selected-bar__count" id="selected-count">0 selected</span>
+      </div>
+      <div class="selected-bar__actions">
+        <button class="btn btn--ghost btn--sm" id="btn-clear-sel">Clear</button>
+        <button class="btn btn--primary btn--sm" id="btn-export-sel-pdf">🖨 Export Selected PDF</button>
+      </div>
+    </div>
+
+    <table class="ic-table" id="ic-table">
+      <thead>
+        <tr>
+          <th class="col-check-td">
+            <label class="checkbox-wrapper">
+              <input type="checkbox" id="select-all-chk" />
+              <span class="checkmark"></span>
+            </label>
+          </th>
+          <th style="width:105px;">Subject</th>
+          <th style="width:130px;">Topic</th>
+          <th style="width:72px;">Type</th>
+          <th>Intro / Conclusion</th>
+          <th style="width:50px;text-align:right;">Edit</th>
+        </tr>
+      </thead>
+      <tbody id="ic-tbody"></tbody>
+    </table>
+
+    <div class="empty-state hidden" id="empty-state">
+      <div class="empty-icon">📝</div>
+      <div class="empty-title">No entries yet</div>
+      <div class="empty-desc">Click <strong>Add New</strong> to store your first introduction or conclusion.</div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-text">&copy; 2026 Designed &amp; Developed by
+      <a href="https://instagram.com/brajmohanm_" target="_blank" rel="noopener noreferrer">Brajmohan</a>
+      &mdash; For Educational and Self-study purpose only.
+    </p>
+  </div>
+</footer>
+
+<!-- ADD / EDIT MODAL -->
+<div class="modal-overlay hidden" id="entry-modal">
+  <div class="modal">
+    <button class="modal-close" id="modal-close-btn">&times;</button>
+    <h2 class="modal-title" id="modal-title">Add New <span>Entry</span></h2>
+
+    <div class="type-selector">
+      <button class="type-sel-btn sel-intro" id="sel-intro">Introduction</button>
+      <button class="type-sel-btn" id="sel-concl">Conclusion</button>
+    </div>
+
+    <div class="modal-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="m-paper">Paper</label>
+          <select class="form-select" id="m-paper">
+            <option value="">Choose paper…</option>
+            <option value="GS1">GS1</option>
+            <option value="GS2">GS2</option>
+            <option value="GS3">GS3</option>
+            <option value="GS4">GS4</option>
+            <option value="Essay">Essay</option>
+            <option value="Geo Optional">Geo Optional</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="m-subject">Subject *</label>
+          <select class="form-select" id="m-subject">
+            <option value="">Choose subject…</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group hidden" id="custom-subject-group">
+        <label class="form-label" for="m-custom-subject">Custom Subject</label>
+        <input class="form-input" type="text" id="m-custom-subject" placeholder="Enter subject name…" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="m-topic">Topic *</label>
+        <input class="form-input" type="text" id="m-topic" placeholder="e.g. Monsoon, Federalism…" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="m-text">Intro / Conclusion Text *</label>
+        <textarea class="form-textarea" id="m-text" rows="6" placeholder="Write your introduction or conclusion here…"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tags / Keywords</label>
+        <div class="modal-tag-chips" id="modal-tag-chips">
+          <input class="modal-tag-input-el" id="modal-tag-input" placeholder="Add tag, press Enter or comma…" autocomplete="off" />
+        </div>
+        <p class="tag-hint">Press <kbd>Enter</kbd> or <kbd>,</kbd> to add · <kbd>Backspace</kbd> to remove last</p>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn--danger hidden" id="btn-delete">Delete</button>
+      <button class="btn btn--ghost" id="btn-modal-cancel">Cancel</button>
+      <button class="btn btn--primary" id="btn-modal-save">Save Entry</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast hidden" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+'use strict';
+
+/* ============================================================
+   PAPER → SUBJECTS MAP  (cascading filter)
+   ============================================================ */
+const PAPER_SUBJECTS = {
+  'GS1':        ['Art & Culture','History','World History','Geography','Society'],
+  'GS2':        ['Polity','Governance','IR','Social Justice'],
+  'GS3':        ['Economy','Agriculture','Science & Tech','Environment','Security','Disaster Management'],
+  'GS4':        ['Ethics — Theory','Ethics — Case Studies'],
+  'Essay':      ['Essay'],
+  'Geo Optional':['Geomorphology','Climatology','Oceanography','Biogeography','Environmental Geography',
+                  'Population Geography','Settlement Geography','Economic Geography',
+                  'Regional Development','Political Geography','Perspectives in Human Geography','Models'],
+  'Other':      []
+};
+
+/* ============================================================
+   STORAGE
+   ============================================================ */
+const STORAGE_KEY = 'qcab_ic_entries';
+const DB = (() => {
+  const load  = () => { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch { return []; } };
+  const save  = (d) => localStorage.setItem(STORAGE_KEY, JSON.stringify(d));
+  const getAll = () => load();
+  function add(e) { const d=load(); e.id=`ic_${Date.now()}_${Math.random().toString(36).slice(2,7)}`; e.createdAt=Date.now(); d.unshift(e); save(d); return e; }
+  function update(id,u) { const d=load(); const i=d.findIndex(e=>e.id===id); if(i<0)return false; d[i]={...d[i],...u,id}; save(d); return true; }
+  function remove(id) { save(load().filter(e=>e.id!==id)); }
+  return { getAll, add, update, remove, save };
+})();
+
+/* ============================================================
+   SELECTION STATE
+   ============================================================ */
+const Selection = {
+  ids: new Set(),
+  get count() { return this.ids.size; },
+  toggle(id, on) { on ? this.ids.add(id) : this.ids.delete(id); },
+  clear() { this.ids.clear(); },
+  getEntries() { return DB.getAll().filter(e => this.ids.has(e.id)); }
+};
+
+/* ============================================================
+   FILTER STATE
+   ============================================================ */
+const FilterState = { paper:'', subject:'', topic:'', tags:[], type:'all' };
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+function escapeHtml(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+let _toast;
+function showToast(msg, type='default') {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.className = `toast toast--${type}`; el.classList.remove('hidden');
+  if (_toast) clearTimeout(_toast);
+  _toast = setTimeout(() => el.classList.add('hidden'), 3200);
+}
+
+/* ============================================================
+   SUBJECT DROPDOWN helpers
+   ============================================================ */
+function subjectsForPaper(paper) {
+  if (!paper) {
+    // all subjects
+    return Object.values(PAPER_SUBJECTS).flat().filter((v,i,a)=>a.indexOf(v)===i).sort();
+  }
+  const base = PAPER_SUBJECTS[paper] || [];
+  // also pull custom subjects stored under this paper
+  const custom = DB.getAll()
+    .filter(e => e.paper === paper)
+    .map(e => e.subject)
+    .filter(s => s && !base.includes(s));
+  return [...new Set([...base, ...custom])].sort();
+}
+
+function populateSubjectDropdown(selId, paper, keepValue) {
+  const sel = document.getElementById(selId);
+  const prev = keepValue !== undefined ? keepValue : sel.value;
+  sel.innerHTML = '<option value="">All Subjects</option>';
+  subjectsForPaper(paper).forEach(s => {
+    const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o);
+  });
+  if (prev && [...sel.options].some(o => o.value === prev)) sel.value = prev;
+}
+
+function populateModalSubjectDropdown(paper) {
+  const sel = document.getElementById('m-subject');
+  const prev = sel.value;
+  sel.innerHTML = '<option value="">Choose subject…</option>';
+  const subjects = paper ? (PAPER_SUBJECTS[paper] || []) : Object.values(PAPER_SUBJECTS).flat().filter((v,i,a)=>a.indexOf(v)===i).sort();
+  subjects.forEach(s => {
+    const o = document.createElement('option'); o.value = s; o.textContent = s; sel.appendChild(o);
+  });
+  const customOpt = document.createElement('option'); customOpt.value = '__custom__'; customOpt.textContent = '+ Other (type below)'; sel.appendChild(customOpt);
+  if (prev && [...sel.options].some(o => o.value === prev)) sel.value = prev;
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+function updateStats() {
+  const all = DB.getAll();
+  document.getElementById('stat-total').innerHTML = `<strong>${all.length}</strong> total`;
+  document.getElementById('stat-intro').innerHTML = `<strong>${all.filter(e=>e.type==='intro').length}</strong> introductions`;
+  document.getElementById('stat-concl').innerHTML = `<strong>${all.filter(e=>e.type==='conclusion').length}</strong> conclusions`;
+}
+
+/* ============================================================
+   SELECTION BAR
+   ============================================================ */
+function updateSelectionBar() {
+  const bar = document.getElementById('selected-bar');
+  const cnt = Selection.count;
+  document.getElementById('selected-count').textContent = `${cnt} selected`;
+  bar.classList.toggle('hidden', cnt === 0);
+}
+
+function syncSelectAllCheckbox(visibleIds) {
+  const cb = document.getElementById('select-all-chk');
+  const selVis = visibleIds.filter(id => Selection.ids.has(id));
+  if (selVis.length === 0)                  { cb.checked=false; cb.indeterminate=false; }
+  else if (selVis.length === visibleIds.length) { cb.checked=true;  cb.indeterminate=false; }
+  else                                       { cb.checked=false; cb.indeterminate=true;  }
+}
+
+/* ============================================================
+   FILTER & RENDER
+   ============================================================ */
+let _lastFiltered = [];
+
+function applyFilters() {
+  const all = DB.getAll();
+  const { paper, subject, topic, tags, type } = FilterState;
+  const filtered = all.filter(e => {
+    if (type !== 'all' && e.type !== type)                        return false;
+    if (paper   && (e.paper   || '') !== paper)                   return false;
+    if (subject && (e.subject || '').toLowerCase() !== subject.toLowerCase()) return false;
+    if (topic   && !(e.topic  || '').toLowerCase().includes(topic.toLowerCase())) return false;
+    if (tags.length) {
+      const hay = [e.topic, e.subject, e.text, e.paper, ...(e.tags||[])].join(' ').toLowerCase();
+      if (!tags.every(t => hay.includes(t))) return false;
+    }
+    return true;
+  });
+  _lastFiltered = filtered;
+  renderTable(filtered);
+}
+
+function renderTable(entries) {
+  const tbody  = document.getElementById('ic-tbody');
+  const empty  = document.getElementById('empty-state');
+  const table  = document.getElementById('ic-table');
+  const count  = document.getElementById('results-count');
+
+  tbody.innerHTML = '';
+  count.textContent = `${entries.length} result${entries.length!==1?'s':''}`;
+
+  if (entries.length === 0) { table.style.display='none'; empty.classList.remove('hidden'); syncSelectAllCheckbox([]); return; }
+  table.style.display = ''; empty.classList.add('hidden');
+
+  const visibleIds = entries.map(e => e.id);
+  const frag = document.createDocumentFragment();
+
+  entries.forEach(e => {
+    const tr = document.createElement('tr');
+    tr.dataset.id = e.id;
+    if (Selection.ids.has(e.id)) tr.classList.add('row--selected');
+
+    const badge = e.type === 'intro'
+      ? `<span class="type-badge type-badge--intro">Intro</span>`
+      : `<span class="type-badge type-badge--concl">Conclusion</span>`;
+
+    const tagsHtml = (e.tags||[]).map(t=>`<span class="row-tag">${escapeHtml(t)}</span>`).join('');
+    const uid = `expand-${e.id}`;
+
+    tr.innerHTML = `
+      <td class="col-check-td">
+        <label class="checkbox-wrapper">
+          <input type="checkbox" class="row-chk" data-id="${e.id}" ${Selection.ids.has(e.id)?'checked':''} />
+          <span class="checkmark"></span>
+        </label>
+      </td>
+      <td class="col-subject-td">${escapeHtml(e.subject||'')}</td>
+      <td class="col-topic-td">${escapeHtml(e.topic||'')}</td>
+      <td class="col-type-td">${badge}</td>
+      <td class="col-text-td">
+        <div class="ic-text" id="${uid}">${escapeHtml(e.text)}</div>
+        <span class="expand-toggle" style="display:none">Show more ▾</span>
+        ${tagsHtml ? `<div class="row-tags">${tagsHtml}</div>` : ''}
+      </td>
+      <td class="col-edit-td">
+        <button class="btn btn--ghost btn--sm btn--icon edit-btn" data-id="${e.id}" title="Edit">✏️</button>
+      </td>`;
+
+    // expand toggle
+    const toggle  = tr.querySelector('.expand-toggle');
+    const textDiv = tr.querySelector('.ic-text');
+    requestAnimationFrame(() => { if (textDiv.scrollHeight > textDiv.clientHeight + 2) toggle.style.display='inline-block'; });
+    toggle.addEventListener('click', () => {
+      const ex = textDiv.classList.toggle('expanded');
+      toggle.textContent = ex ? 'Show less ▴' : 'Show more ▾';
+    });
+
+    // checkbox
+    tr.querySelector('.row-chk').addEventListener('change', ev => {
+      Selection.toggle(e.id, ev.target.checked);
+      tr.classList.toggle('row--selected', ev.target.checked);
+      syncSelectAllCheckbox(visibleIds);
+      updateSelectionBar();
+    });
+
+    // row click (not on checkbox/edit)
+    tr.addEventListener('click', ev => {
+      if (ev.target.closest('label')||ev.target.closest('.edit-btn')) return;
+      const cb = tr.querySelector('.row-chk');
+      cb.checked = !cb.checked;
+      Selection.toggle(e.id, cb.checked);
+      tr.classList.toggle('row--selected', cb.checked);
+      syncSelectAllCheckbox(visibleIds);
+      updateSelectionBar();
+    });
+
+    // edit
+    tr.querySelector('.edit-btn').addEventListener('click', () => openEditModal(e.id));
+
+    frag.appendChild(tr);
+  });
+
+  tbody.appendChild(frag);
+  syncSelectAllCheckbox(visibleIds);
+}
+
+/* ============================================================
+   TAG INPUT FACTORY
+   ============================================================ */
+function makeTagInput(containerId, inputId, onUpdate) {
+  const container = document.getElementById(containerId);
+  const input     = document.getElementById(inputId);
+  let tags = [];
+  function renderChips() {
+    container.querySelectorAll('.tag-chip').forEach(c=>c.remove());
+    tags.forEach((t,i)=>{
+      const chip = document.createElement('span'); chip.className='tag-chip';
+      chip.innerHTML=`${escapeHtml(t)}<span class="remove-tag" data-i="${i}">&times;</span>`;
+      container.insertBefore(chip, input);
+    });
+    onUpdate(tags);
+  }
+  function addTag(v) { v=v.trim().toLowerCase(); if(v&&!tags.includes(v)){tags.push(v);renderChips();} }
+  function removeTag(i) { tags.splice(i,1); renderChips(); }
+  input.addEventListener('keydown', e => {
+    if ((e.key==='Enter'||e.key===',') && input.value.trim()) { e.preventDefault(); addTag(input.value.replace(',','')); input.value=''; }
+    if (e.key==='Backspace'&&!input.value&&tags.length) removeTag(tags.length-1);
+  });
+  container.addEventListener('click', e => {
+    const rm = e.target.closest('.remove-tag');
+    if (rm) removeTag(Number(rm.dataset.i)); else input.focus();
+  });
+  return { reset(){ tags=[]; renderChips(); input.value=''; }, get(){ return [...tags]; } };
+}
+
+function makeModalTagInput() {
+  const container = document.getElementById('modal-tag-chips');
+  const input     = document.getElementById('modal-tag-input');
+  let tags = [];
+  function renderChips() {
+    container.querySelectorAll('.modal-tag-chip').forEach(c=>c.remove());
+    tags.forEach((t,i)=>{
+      const chip=document.createElement('span'); chip.className='modal-tag-chip';
+      chip.innerHTML=`${escapeHtml(t)}<span class="rm" data-i="${i}">&times;</span>`;
+      container.insertBefore(chip, input);
+    });
+  }
+  function addTag(v) { v=v.trim().toLowerCase(); if(v&&!tags.includes(v)){tags.push(v);renderChips();} }
+  function removeTag(i) { tags.splice(i,1); renderChips(); }
+  input.addEventListener('keydown', e => {
+    if ((e.key==='Enter'||e.key===',')&&input.value.trim()) { e.preventDefault(); addTag(input.value.replace(',','')); input.value=''; }
+    if (e.key==='Backspace'&&!input.value&&tags.length) removeTag(tags.length-1);
+  });
+  container.addEventListener('click', e => {
+    const rm=e.target.closest('.rm'); if(rm) removeTag(Number(rm.dataset.i)); else input.focus();
+  });
+  return {
+    set(arr){ tags=[...(arr||[])]; renderChips(); input.value=''; },
+    get(){ return [...tags]; },
+    clear(){ tags=[]; renderChips(); input.value=''; }
+  };
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+let modalMode='add', editingId=null, activeType='intro', modalTagCtrl=null;
+
+function setActiveType(type) {
+  activeType = type;
+  document.getElementById('sel-intro').className = 'type-sel-btn' + (type==='intro'?' sel-intro':'');
+  document.getElementById('sel-concl').className = 'type-sel-btn' + (type==='conclusion'?' sel-concl':'');
+}
+
+function openAddModal() {
+  modalMode='add'; editingId=null;
+  document.getElementById('modal-title').innerHTML='Add New <span>Entry</span>';
+  document.getElementById('btn-delete').classList.add('hidden');
+  document.getElementById('m-paper').value='';
+  populateModalSubjectDropdown('');
+  document.getElementById('m-subject').value='';
+  document.getElementById('m-topic').value='';
+  document.getElementById('m-text').value='';
+  document.getElementById('custom-subject-group').classList.add('hidden');
+  document.getElementById('m-custom-subject').value='';
+  modalTagCtrl.clear(); setActiveType('intro');
+  document.getElementById('entry-modal').classList.remove('hidden');
+  setTimeout(()=>document.getElementById('m-topic').focus(), 80);
+}
+
+function openEditModal(id) {
+  const e = DB.getAll().find(x=>x.id===id); if(!e) return;
+  modalMode='edit'; editingId=id;
+  document.getElementById('modal-title').innerHTML='Edit <span>Entry</span>';
+  document.getElementById('btn-delete').classList.remove('hidden');
+  document.getElementById('m-paper').value = e.paper || '';
+  populateModalSubjectDropdown(e.paper || '');
+  const opts = [...document.getElementById('m-subject').options].map(o=>o.value);
+  if (opts.includes(e.subject)) document.getElementById('m-subject').value = e.subject;
+  else {
+    document.getElementById('m-subject').value='__custom__';
+    document.getElementById('custom-subject-group').classList.remove('hidden');
+    document.getElementById('m-custom-subject').value = e.subject || '';
+  }
+  document.getElementById('m-topic').value = e.topic||'';
+  document.getElementById('m-text').value  = e.text||'';
+  modalTagCtrl.set(e.tags||[]); setActiveType(e.type);
+  document.getElementById('entry-modal').classList.remove('hidden');
+  setTimeout(()=>document.getElementById('m-text').focus(), 80);
+}
+
+function closeModal() { document.getElementById('entry-modal').classList.add('hidden'); }
+
+function saveModal() {
+  let subject = document.getElementById('m-subject').value;
+  if (subject==='__custom__') subject=document.getElementById('m-custom-subject').value.trim();
+  const paper = document.getElementById('m-paper').value;
+  const topic = document.getElementById('m-topic').value.trim();
+  const text  = document.getElementById('m-text').value.trim();
+  if (!subject){ showToast('Please choose a subject.','error'); return; }
+  if (!topic)  { showToast('Please enter a topic.','error');   return; }
+  if (!text)   { showToast('Please enter the text.','error');  return; }
+  const entry = { type:activeType, paper, subject, topic, text, tags:modalTagCtrl.get() };
+  if (modalMode==='add') { DB.add(entry); showToast('Entry added!','success'); }
+  else { DB.update(editingId, entry); showToast('Entry updated!','success'); }
+  closeModal(); updateStats(); applyFilters();
+}
+
+function deleteEntry() {
+  if (!editingId) return;
+  if (!confirm('Delete this entry permanently?')) return;
+  DB.remove(editingId); showToast('Entry deleted.');
+  closeModal(); updateStats(); applyFilters();
+}
+
+/* ============================================================
+   EXPORT JSON
+   ============================================================ */
+function exportJSON() {
+  const entries = DB.getAll();
+  if (!entries.length){ showToast('Nothing to export yet.','error'); return; }
+  const blob = new Blob([JSON.stringify(entries,null,2)],{type:'application/json'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = `ic_backup_${new Date().toISOString().slice(0,10)}.json`;
+  a.click(); URL.revokeObjectURL(url);
+  showToast(`Exported ${entries.length} entries.`,'success');
+}
+
+/* ============================================================
+   IMPORT JSON
+   ============================================================ */
+function importJSON(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const incoming = JSON.parse(ev.target.result);
+      if (!Array.isArray(incoming)) throw new Error();
+      const existing = DB.getAll();
+      const ids = new Set(existing.map(e=>e.id));
+      let added=0;
+      const merged=[...existing];
+      incoming.forEach(e=>{
+        if(!e.type||!e.subject||!e.text) return;
+        if(e.id&&ids.has(e.id)) return;
+        if(!e.id) e.id=`ic_${Date.now()}_${Math.random().toString(36).slice(2,7)}`;
+        merged.push(e); added++;
+      });
+      DB.save(merged);
+      updateStats(); applyFilters();
+      showToast(`Imported ${added} new entries (${incoming.length-added} duplicates skipped).`,'success');
+    } catch { showToast('Invalid JSON file.','error'); }
+  };
+  reader.readAsText(file);
+}
+
+/* ============================================================
+   EXPORT PDF  — only selected entries (or all if none selected)
+   grouped: Subject → Topic → Intro / Conclusion
+   ============================================================ */
+function exportPDF(entriesOverride) {
+  const entries = entriesOverride || (Selection.count > 0 ? Selection.getEntries() : _lastFiltered);
+  if (!entries || !entries.length){ showToast('No entries to export.','error'); return; }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
+  const PW=210, PH=297, ML=15, MR=15, MT=18, MB=18, TW=PW-ML-MR;
+  let y=MT, pageNo=1;
+
+  function checkPage(need) {
+    if (y+need > PH-MB) { doc.addPage(); pageNo++; y=MT; footer(); }
+  }
+  function footer() {
+    doc.setFontSize(8); doc.setFont('helvetica','italic'); doc.setTextColor(90,116,153);
+    doc.text('UPSC Intros & Conclusions Bank', ML, PH-8);
+    doc.text(String(pageNo), PW/2, PH-8, {align:'center'});
+    doc.text(new Date().toLocaleDateString('en-IN'), PW-MR, PH-8, {align:'right'});
+    doc.setTextColor(0,0,0);
+  }
+  function printWrapped(text, fs, style, color, indent, lh) {
+    doc.setFontSize(fs); doc.setFont('helvetica', style); doc.setTextColor(...color);
+    doc.splitTextToSize(text, TW-indent).forEach(line => { checkPage(lh); doc.text(line, ML+indent, y); y+=lh; });
+    doc.setTextColor(0,0,0);
+  }
+
+  // Group: subject → topic → entries
+  const grouped = {};
+  entries.forEach(e => {
+    const s = e.subject||'General', t = e.topic||'Untitled';
+    if(!grouped[s]) grouped[s]={};
+    if(!grouped[s][t]) grouped[s][t]=[];
+    grouped[s][t].push(e);
+  });
+
+  // Cover
+  doc.setFontSize(17); doc.setFont('helvetica','bold'); doc.setTextColor(15,30,53);
+  doc.text('Intros & Conclusions Bank', ML, y); y+=7;
+  doc.setFontSize(9); doc.setFont('helvetica','normal'); doc.setTextColor(90,116,153);
+  doc.text(`Generated ${new Date().toLocaleDateString('en-IN')} · ${entries.length} entries`, ML, y); y+=3;
+  doc.setDrawColor(26,86,168); doc.setLineWidth(0.5); doc.line(ML,y,PW-MR,y); y+=8;
+  doc.setTextColor(0,0,0);
+  footer();
+
+  Object.keys(grouped).sort().forEach(subject => {
+    // Subject heading
+    checkPage(14);
+    doc.setFontSize(13); doc.setFont('helvetica','bold'); doc.setTextColor(26,86,168);
+    doc.text(subject.toUpperCase(), ML, y); y+=2;
+    doc.setDrawColor(26,86,168); doc.setLineWidth(0.4);
+    doc.line(ML, y, ML+doc.getTextWidth(subject.toUpperCase()), y); y+=6;
+
+    Object.keys(grouped[subject]).sort().forEach(topic => {
+      checkPage(10);
+      doc.setFontSize(11); doc.setFont('helvetica','bolditalic'); doc.setTextColor(15,30,53);
+      doc.text(topic, ML+3, y); y+=6;
+
+      grouped[subject][topic].forEach(entry => {
+        const isIntro = entry.type==='intro';
+        const label   = isIntro ? '▸ Introduction' : '▸ Conclusion';
+        const lcolor  = isIntro ? [107,63,160] : [26,122,74];
+
+        checkPage(7);
+        doc.setFontSize(8.5); doc.setFont('helvetica','bold'); doc.setTextColor(...lcolor);
+        doc.text(label, ML+5, y); y+=5;
+
+        printWrapped(entry.text, 10, 'normal', [40,54,72], 5, 5.5);
+
+        if (entry.tags&&entry.tags.length) {
+          checkPage(5); doc.setFontSize(7.5); doc.setFont('helvetica','italic'); doc.setTextColor(90,116,153);
+          doc.text('Tags: '+entry.tags.join(', '), ML+5, y); y+=4.5; doc.setTextColor(0,0,0);
+        }
+        y+=3;
+      });
+      y+=4;
+    });
+    y+=5;
+  });
+
+  const label = Selection.count>0 ? `IC_Selected` : `IC_Filtered`;
+  doc.save(`${label}_${new Date().toISOString().slice(0,10)}.pdf`);
+  showToast('PDF exported!','success');
+}
+
+/* ============================================================
+   TYPE TOGGLE
+   ============================================================ */
+function bindTypeToggle() {
+  document.querySelectorAll('.type-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active-all','active-intro','active-concl'));
+      const t=btn.dataset.filterType; FilterState.type=t;
+      btn.classList.add(t==='all'?'active-all':t==='intro'?'active-intro':'active-concl');
+      applyFilters();
+    });
+  });
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  modalTagCtrl = makeModalTagInput();
+
+  const filterTagCtrl = makeTagInput(
+    'filter-tags-container','filter-tag-input',
+    tags => { FilterState.tags = tags; }
+  );
+
+  // Populate initial subject dropdown (all papers)
+  populateSubjectDropdown('f-subject', '');
+
+  updateStats();
+  applyFilters();
+  bindTypeToggle();
+
+  // Paper filter cascade
+  document.getElementById('f-paper').addEventListener('change', function() {
+    FilterState.paper = this.value;
+    populateSubjectDropdown('f-subject', this.value);
+    FilterState.subject = '';
+    applyFilters();
+  });
+
+  // Subject filter
+  document.getElementById('f-subject').addEventListener('change', function() {
+    FilterState.subject = this.value; applyFilters();
+  });
+
+  // Topic filter (live)
+  document.getElementById('f-topic').addEventListener('input', function() {
+    FilterState.topic = this.value.trim(); applyFilters();
+  });
+
+  // Apply / Reset
+  document.getElementById('btn-apply').addEventListener('click', applyFilters);
+  document.getElementById('btn-reset').addEventListener('click', () => {
+    document.getElementById('f-paper').value='';
+    document.getElementById('f-subject').value='';
+    document.getElementById('f-topic').value='';
+    filterTagCtrl.reset();
+    FilterState.paper=''; FilterState.subject=''; FilterState.topic=''; FilterState.tags=[];
+    populateSubjectDropdown('f-subject','');
+    applyFilters();
+  });
+
+  // Select all checkbox
+  document.getElementById('select-all-chk').addEventListener('change', function() {
+    _lastFiltered.forEach(e => {
+      Selection.toggle(e.id, this.checked);
+      const tr = document.querySelector(`tr[data-id="${e.id}"]`);
+      if (tr) tr.classList.toggle('row--selected', this.checked);
+      const cb = tr && tr.querySelector('.row-chk');
+      if (cb) cb.checked = this.checked;
+    });
+    updateSelectionBar();
+  });
+
+  // Clear selection
+  document.getElementById('btn-clear-sel').addEventListener('click', () => {
+    Selection.clear(); applyFilters(); updateSelectionBar();
+  });
+
+  // Export PDF (toolbar button — exports selected if any, else filtered)
+  document.getElementById('btn-export-pdf').addEventListener('click', () => exportPDF());
+
+  // Export selected PDF (selected bar button)
+  document.getElementById('btn-export-sel-pdf').addEventListener('click', () => exportPDF(Selection.getEntries()));
+
+  // JSON
+  document.getElementById('btn-export-json').addEventListener('click', exportJSON);
+  document.getElementById('btn-import-json').addEventListener('click', () => {
+    document.getElementById('import-file-input').value='';
+    document.getElementById('import-file-input').click();
+  });
+  document.getElementById('import-file-input').addEventListener('change', e => importJSON(e.target.files[0]));
+
+  // Add new
+  document.getElementById('btn-add-new').addEventListener('click', openAddModal);
+
+  // Modal paper → subject cascade
+  document.getElementById('m-paper').addEventListener('change', function() {
+    populateModalSubjectDropdown(this.value);
+    document.getElementById('custom-subject-group').classList.add('hidden');
+  });
+
+  // Modal subject custom
+  document.getElementById('m-subject').addEventListener('change', function() {
+    document.getElementById('custom-subject-group').classList.toggle('hidden', this.value!=='__custom__');
+    if (this.value!=='__custom__') document.getElementById('m-custom-subject').value='';
+  });
+
+  // Modal type buttons
+  document.getElementById('sel-intro').addEventListener('click', () => setActiveType('intro'));
+  document.getElementById('sel-concl').addEventListener('click', () => setActiveType('conclusion'));
+
+  // Modal close / save / delete
+  document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+  document.getElementById('btn-modal-cancel').addEventListener('click', closeModal);
+  document.getElementById('entry-modal').addEventListener('click', e => { if(e.target===document.getElementById('entry-modal')) closeModal(); });
+  document.getElementById('btn-modal-save').addEventListener('click', saveModal);
+  document.getElementById('btn-delete').addEventListener('click', deleteEntry);
+
+  // Keyboard
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+});
+</script>
+</body>
+</html>
