@@ -591,9 +591,9 @@ const PDFGenerator = (() => {
   const RIGHT_NOTE_X      = 194;  // "Candidates…" just outside right rule
 
   function pagesForMarks(marks) {
-    if (marks === 10) return 1;
-    if (marks === 15) return 1;
-    if (marks === 20) return 1;
+    if (marks === 10) return 2;
+    if (marks === 15) return 3;
+    if (marks === 20) return 4;
     if (marks === 125) return 15;
     return Math.ceil(marks / 5);
   }
@@ -706,10 +706,10 @@ const Modal = (() => {
     _pendingQuestions = questions;
     const totalMarks = questions.reduce((s, q) => s + q.marks, 0);
     const totalPages = questions.reduce((s, q) => {
-      if (q.marks <= 10) return s + 1;
-      if (q.marks <= 15) return s + 1;
-      if (q.marks <= 20) return s + 1;
-      if (q.marks <= 125) return s + 1;
+      if (q.marks <= 10) return s + 2;
+      if (q.marks <= 15) return s + 3;
+      if (q.marks <= 20) return s + 4;
+      if (q.marks <= 125) return s + 15;
       return s + Math.ceil(q.marks / 5) + 1;
     }, 0);
     DOM.modalSummary().innerHTML =
