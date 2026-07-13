@@ -706,9 +706,10 @@ const Modal = (() => {
     _pendingQuestions = questions;
     const totalMarks = questions.reduce((s, q) => s + q.marks, 0);
     const totalPages = questions.reduce((s, q) => {
-      if (q.marks <= 10) return s + 2;
-      if (q.marks <= 15) return s + 3;
-      if (q.marks <= 20) return s + 4;
+      if (q.marks <= 10) return s + 1;
+      if (q.marks <= 15) return s + 1;
+      if (q.marks <= 20) return s + 1;
+      if (q.marks <= 125) return s + 1;
       return s + Math.ceil(q.marks / 5) + 1;
     }, 0);
     DOM.modalSummary().innerHTML =
