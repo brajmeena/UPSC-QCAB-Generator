@@ -34,5 +34,6 @@
         <span>${esc(err.message || err)}</span>
       </div>`;
     }
+  }
   init();
 })();
